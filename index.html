@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KlikBus — Sewa Bus Sulawesi Selatan (Multi‑PO)</title>
+  <meta name="description" content="KlikBus: sewa bus & minibus (8–14/30/40 seat) di Sulawesi Selatan — Makassar, Parepare, Pinrang, Sidrap, Barru, Toraja, Malino, Bira, Gowa, Maros, Bone, Wajo, Palopo, Soppeng, Pangkep, Luwu. Order via WhatsApp." />
+  <meta name="theme-color" content="#FACC15" />
+  <link rel="icon" href="image/favicon.ico" />
+  <meta property="og:title" content="KlikBus — Sewa Bus Sulawesi Selatan (Multi‑PO)" />
+  <meta property="og:description" content="Sewa bus & minibus Multi‑PO khusus wilayah Sulawesi Selatan — Makassar, Parepare, Pinrang, Sidrap, Barru, Toraja, Malino, Bira, Gowa, Maros, Bone, Wajo, Palopo, Soppeng, Pangkep, Luwu. Order cepat via WhatsApp Admin KlikBus." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="image/og-cover.jpg" />
+  <link rel="canonical" href="https://klikbus.id/" />
+  <link rel="alternate" hreflang="id-ID" href="https://klikbus.id/" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="googlebot" content="index,follow" />
+  <meta property="og:site_name" content="KlikBus" />
+  <meta property="og:locale" content="id_ID" />
+  <meta property="og:url" content="https://klikbus.id/" />
+  <meta property="og:image:alt" content="KlikBus — Sewa Bus & Minibus" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KlikBus — Sewa Bus Sulawesi Selatan (Multi‑PO)" />
+  <meta name="twitter:description" content="Sewa bus & minibus Multi‑PO di Sulawesi Selatan: Makassar, Parepare, Pinrang, Sidrap, Barru, Toraja, Malino, Bira, Gowa, Maros, Bone, Wajo, Palopo, Soppeng, Pangkep, Luwu. Klik untuk pesan via WhatsApp." />
+  <meta name="twitter:image" content="image/og-cover.jpg" />
+  <meta name="keywords" content="sewa bus sulawesi selatan, sewa bus sulsel, sewa bus makassar, sewa bus parepare, sewa bus pinrang, sewa bus sidrap, sewa bus barru, sewa bus toraja, sewa bus malino, sewa bus bira, sewa bus gowa, sewa bus maros, sewa bus bone, sewa bus wajo, sewa bus palopo, sewa bus soppeng, sewa bus pangkep, sewa bus luwu, sewa minibus sulsel, carter bus sulsel, medium bus sulsel, big bus sulsel, klikbus" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+
+  <style>
+    :root{
+      --orange:#FACC15; /* Kuning */
+      --green:#910606;  /* Merah tua (pengganti biru) */
+      --text:#0F172A;   /* Slate-900 */
+      --muted:#475569;  /* Slate-600 */
+      --bg:#FFFBEB;     /* Latar kuning muda */
+      --card:#ffffff;
+      --ring: rgba(0,0,0,.12);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, "Apple Color Emoji","Segoe UI Emoji";color:var(--text);background:var(--bg);}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    /* Layout */
+    .container{max-width:1180px;margin-inline:auto;padding:24px}
+    header{position:sticky;top:0;z-index:40;backdrop-filter:saturate(1.2) blur(6px);background:linear-gradient(180deg, rgba(250,204,21,.92), rgba(250,204,21,.7));color:#0F172A;border-bottom:1px solid rgba(15,23,42,.12)}
+    .nav{display:flex;align-items:center;gap:18px;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:clamp(32px, 6vw, 56px); width:auto;}
+
+    .hero{background:linear-gradient(135deg, var(--orange), #FDE68A 35%, #FEF9C3);color:#0F172A}
+    .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
+    @media(max-width:900px){.hero-inner{grid-template-columns:1fr}}
+
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:0 8px 24px rgba(0,0,0,.08);border:1px solid #f1f5f9}
+    .stack{display:grid;gap:16px}
+    .grid{display:grid;gap:18px}
+    .grid.armada{grid-template-columns:repeat(3,1fr)}
+    @media(max-width:1000px){.grid.armada{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:700px){.grid.armada{grid-template-columns:1fr}}
+
+    .btn{--_bg:var(--green);--_fg:#fff;display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;background:var(--_bg);color:var(--_fg);border:1px solid transparent;font-weight:700;box-shadow:0 2px 0 rgba(0,0,0,.06);transition:.2s}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(145,6,6,.35)}
+    .btn.secondary{--_bg:#fff;--_fg:var(--green);border-color:var(--green)}
+    .btn.orange{--_bg:var(--orange);--_fg:#0F172A;border-color:rgba(0,0,0,.1)}
+    .btn.ghost{--_bg:transparent;--_fg:#fff;border-color:#fff}
+
+    .pill{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;padding:8px 12px;border:1px dashed rgba(0,0,0,.15);border-radius:999px;background:#fff}
+
+    .kicker{font-size:.85rem;color:#143b2a;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+    h1{font-size:clamp(1.8rem, 2.4vw + 1rem, 3rem);line-height:1.1;margin:8px 0 10px}
+    h2{font-size:clamp(1.4rem, 1vw + 1rem, 2rem);margin:0 0 6px}
+    p{margin:0;color:var(--text)}
+    .muted{color:var(--muted)}
+
+    .feature{display:flex;gap:12px;align-items:flex-start}
+    .feature .icon{width:34px;height:34px;border-radius:10px;background:#fff;display:grid;place-items:center;border:1px solid #e2e8f0}
+
+    .fleet-cover{aspect-ratio: 16/9; border-radius: 14px; background:#f8fafc;display:grid;place-items:center;border:1px solid #e2e8f0;overflow:hidden}
+    .fleet-cover img{width:100%;height:100%;object-fit:cover}
+
+    /* Carousel controls */
+    .carousel{position:relative}
+    .carousel .carousel-frame{width:100%;height:100%}
+    .carousel .nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);color:#fff;border:none;padding:6px 10px;border-radius:10px;cursor:pointer}
+    .carousel .nav.prev{left:8px}
+    .carousel .nav.next{right:8px}
+    .carousel .dots{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);display:flex;gap:6px}
+    .carousel .dot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.55)}
+    .carousel .dot.active{background:#fff}
+
+    .floating-wa{position:fixed;right:16px;bottom:16px;z-index:60}
+
+    footer{background:linear-gradient(180deg, #910606, #B91C1C);color:#FDF2F2;margin-top:36px}
+    footer .cols{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
+    @media(max-width:900px){footer .cols{grid-template-columns:1fr}}
+
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{font-size:.8rem;background:#F1F5F9;border:1px solid #E2E8F0;padding:6px 10px;border-radius:999px;color:#0F172A;font-weight:700}
+    footer .chip{background:#ffffff;color:#0F172A;border-color:#E2E8F0;font-weight:700}
+
+    .section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+
+    .map-button{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;border:1px solid currentColor;background:transparent;color:inherit;font-weight:700}
+    .map-button:hover{background:rgba(255,255,255,.12)}
+
+    .divider{height:1px;background:linear-gradient(90deg, rgba(0,0,0,0), rgba(2,6,23,.2), rgba(0,0,0,0)); margin: 20px 0;}
+
+    .notice{font-size:.86rem;color:#0f172a;background:#FFFBEB;border:1px solid #FDE68A;padding:10px 12px;border-radius:12px}
+
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .toolbar input[type="search"], select, input, textarea{padding:10px 12px;border-radius:12px;border:1px solid #e2e8f0}
+    .filter-btn{padding:8px 12px;border-radius:999px;border:1px solid #e2e8f0;background:#fff;cursor:pointer}
+    .filter-btn.active{background:var(--green);border-color:var(--green);color:#fff}
+
+    .price{font-weight:800}
+    .price small{font-weight:600;color:var(--muted)}
+
+    .po-card{display:grid;gap:12px;padding:16px}
+    .po-head{display:flex;align-items:center;gap:10px}
+    .po-head img{width:36px;height:36px;border-radius:9px;border:1px solid #e2e8f0;object-fit:cover}
+    .po-actions{display:flex;gap:8px;flex-wrap:wrap}
+    footer .btn.ghost{--_fg:var(--text);border-color:var(--text)}
+    .btn.wa{--_bg:#25D366;--_fg:#fff;border-color:#1DA851}
+    .btn.wa:hover{box-shadow:0 8px 18px rgba(37,211,102,.35)}
+  </style>
+</head>
+<body>
+  <script>
+    // Konfigurasi brand global
+    window.KLIKBUS = { brand: 'KlikBus', area: 'Sulawesi Selatan', wa: '6285256473344' };
+  </script>
+
+  <header>
+    <div class="container nav">
+      <div class="brand" aria-label="KlikBus">
+        <img src="image/Logoklikbus.png" alt="KlikBus" />
+      </div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <a class="map-button" href="#po" title="Daftar PO">🚌 Daftar PO</a>
+        <a class="btn" href="#order">Pesan via WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-inner" style="padding:28px 24px 36px 24px;">
+      <div class="stack">
+        <div class="pill">Multi‑PO • Minibus 8–14 • Medium 30 • Big Bus 40 seat</div>
+        <h1>Sewa Bus & Minibus di Sulawesi Selatan</h1>
+        <p class="muted">Pilih PO favorit, lihat foto unit & kisaran harga, lalu order cepat via WhatsApp. Cocok untuk dinas, tour, event, dan rombongan keluarga.</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:6px;">
+          <a class="btn orange" href="#po">Lihat PO & Harga</a>
+          <a class="btn secondary" href="#order">Form Pemesanan</a>
+        </div>
+        <div style="display:flex; gap:14px; margin-top:12px; flex-wrap:wrap;">
+          <div class="feature"><div class="icon">🖼️</div><div><strong>Foto Asli Unit</strong><div class="muted">Setiap PO upload galeri</div></div></div>
+          <div class="feature"><div class="icon">💬</div><div><strong>WA ke Admin KlikBus</strong><div class="muted">Tanpa perantara rumit</div></div></div>
+          <div class="feature"><div class="icon">💳</div><div><strong>Harga Per PO</strong><div class="muted">Transparan & fleksibel</div></div></div>
+        </div>
+      </div>
+      <div class="card" style="padding:16px;">
+        <div class="fleet-cover"><img src="image/og-cover.jpg" alt="Bus cover" onerror="this.src='image/placeholder.jpg'"/></div>
+        <div class="chips" style="margin-top:12px">
+          <span class="chip">AC Dingin</span>
+          <span class="chip">Audio & USB</span>
+          <span class="chip">Bagasi Luas</span>
+          <span class="chip">Reclining Seat*</span>
+        </div>
+        <p class="muted" style="margin-top:8px;font-size:.85rem">*Fitur tergantung tipe & PO. Konfirmasi ke admin.</p>
+      </div>
+    </div>
+  </section>
+
+  <main class="container" style="padding-top:28px">
+    <section id="po">
+      <div class="section-title">
+        <h2>Daftar PO & Armada</h2>
+        <div class="toolbar">
+          <input id="search-po" type="search" placeholder="Cari PO…" />
+          <button class="filter-btn active" data-type="all">Semua</button>
+          <button class="filter-btn" data-type="hiace">Minibus</button>
+          <button class="filter-btn" data-type="medium">Medium</button>
+          <button class="filter-btn" data-type="big">Big Bus</button>
+        </div>
+      </div>
+      <div class="grid armada" id="po-grid"></div>
+      <div id="po-more"></div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="grid" id="order" style="grid-template-columns:1.2fr .8fr">
+      <div class="card" style="padding:18px">
+        <h2 style="margin-top:0">Pemesanan Cepat (WhatsApp)</h2>
+        <p class="muted" style="margin-bottom:10px">Pilih PO & isi data singkat. Pesan terkirim ke WhatsApp Admin KlikBus.</p>
+        <form id="wa-form" class="stack" onsubmit="return false;">
+          <div class="grid" style="grid-template-columns:1fr 1fr">
+            <label class="stack">
+              <span class="muted">Pilih PO</span>
+              <select id="poSelect" required></select>
+            </label>
+            <label class="stack">
+              <span class="muted">Jenis Armada</span>
+              <select id="armada" required>
+                <option value="Minibus 8–14">Minibus (8–14 seat)</option>
+                <option value="Medium Bus 30">Medium Bus (30 seat)</option>
+                <option value="Big Bus 40">Big Bus (40 seat)</option>
+              </select>
+            </label>
+          </div>
+          <div class="grid" style="grid-template-columns:1fr 1fr">
+            <label class="stack">
+              <span class="muted">Tanggal Jemput</span>
+              <input type="date" id="tanggal" required />
+            </label>
+            <label class="stack">
+              <span class="muted">Jam Jemput</span>
+              <input type="time" id="jam" />
+            </label>
+          </div>
+          <div class="grid" style="grid-template-columns:1fr 1fr">
+            <label class="stack">
+              <span class="muted">Durasi (hari)</span>
+              <input type="number" id="durasi" min="1" value="1" />
+            </label>
+            <label class="stack">
+              <span class="muted">Jumlah Penumpang</span>
+              <input type="number" id="penumpang" min="1" placeholder="cth: 30" />
+            </label>
+          </div>
+          <label class="stack">
+            <span class="muted">Titik Jemput</span>
+            <input type="text" id="jemput" placeholder="Contoh: Perwakilan / alamat lengkap" />
+          </label>
+          <label class="stack">
+            <span class="muted">Tujuan</span>
+            <input type="text" id="tujuan" placeholder="Contoh: Makassar / Parepare / dll" />
+          </label>
+          <label class="stack">
+            <span class="muted">Nama Pemesan</span>
+            <input type="text" id="nama" placeholder="Nama Anda" />
+          </label>
+          <label class="stack">
+            <span class="muted">Catatan Tambahan</span>
+            <textarea id="catatan" rows="3" placeholder="Penjelasan rute, stop point, dll (opsional)"></textarea>
+          </label>
+          <div style="display:flex; gap:10px; flex-wrap:wrap">
+            <button class="btn" id="send-wa">Kirim ke WhatsApp Admin</button>
+            <a class="btn secondary" id="cta-wa-manual" target="_blank">Chat Admin</a>
+          </div>
+          <p class="notice">Harga per PO dapat berbeda tergantung rute, tanggal, dan durasi. Tanyakan promo ke Admin KlikBus.</p>
+        </form>
+      </div>
+      <aside class="stack" style="gap:14px">
+        <div class="card" style="padding:16px">
+          <h3 style="margin:0 0 4px 0">Tentang KlikBus</h3>
+          <div class="stack">
+            <div class="feature"><div class="icon">🧭</div><div><strong>Satu Tempat</strong><div class="muted">Kumpulkan banyak PO di berbagai kota</div></div></div>
+            <div class="feature"><div class="icon">🖼️</div><div><strong>Foto Transparan</strong><div class="muted">Owner upload foto unit</div></div></div>
+            <div class="feature"><div class="icon">💬</div><div><strong>WA Langsung</strong><div class="muted">Tanpa ribet, konfirmasi cepat</div></div></div>
+          </div>
+        </div>
+        <div class="card" style="padding:16px">
+          <h3 style="margin:0 0 6px 0">Info Penting</h3>
+          <ul class="muted" style="margin:0 0 0 18px; line-height:1.6">
+            <li>DP untuk <em>lock</em> tanggal (kebijakan tiap PO bisa berbeda).</li>
+            <li>Biaya tol/parkir/BBM/driver menyesuaikan paket & PO.</li>
+            <li>Aturan titik jemput mengikuti kebijakan PO.</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+    <section id="seo-lokasi" class="container" style="padding:0 24px 24px 24px">
+      <div class="card" style="padding:16px">
+        <h2 style="margin:0 0 8px 0">Layanan Sewa Bus di Sulawesi Selatan</h2>
+        <p class="muted" style="margin:0 0 10px 0">Klik cepat ke pencarian PO berdasarkan kota/tujuan:</p>
+        <div class="chips">
+          <a class="chip" href="?q=pinrang">Sewa Bus Pinrang</a>
+          <a class="chip" href="?q=parepare">Sewa Bus Parepare</a>
+          <a class="chip" href="?q=makassar">Sewa Bus Makassar</a>
+          <a class="chip" href="?q=sidrap">Sewa Bus Sidrap</a>
+          <a class="chip" href="?q=barru">Sewa Bus Barru</a>
+          <a class="chip" href="?q=toraja">Sewa Bus Toraja</a>
+          <a class="chip" href="?q=malino">Sewa Bus Malino</a>
+          <a class="chip" href="?q=bira">Sewa Bus Bira</a>
+          <a class="chip" href="?q=gowa">Sewa Bus Gowa</a>
+          <a class="chip" href="?q=maros">Sewa Bus Maros</a>
+          <a class="chip" href="?q=bone">Sewa Bus Bone</a>
+          <a class="chip" href="?q=wajo">Sewa Bus Wajo</a>
+          <a class="chip" href="?q=palopo">Sewa Bus Palopo</a>
+          <a class="chip" href="?q=soppeng">Sewa Bus Soppeng</a>
+          <a class="chip" href="?q=pangkep">Sewa Bus Pangkep</a>
+          <a class="chip" href="?q=luwu">Sewa Bus Luwu</a>
+        </div>
+        <p class="muted" style="font-size:.9rem;margin-top:10px">Kami melayani perjalanan wisata, dinas, event, antar kota & provinsi dari kota-kota di atas dan sekitarnya. Armada tersedia Minibus 8–14, Medium 30, dan Big Bus 40 seat.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="padding:24px 24px 28px 24px">
+      <div class="cols">
+        <div>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px">
+            <img src="image/Logofooter.png" alt="Logo KlikBus" style="height:38px" />
+            <div>
+              <strong>KlikBus</strong>
+              <div class="muted" style="color:#0F172A">Aggregator Multi‑PO: Minibus, Medium & Big Bus</div>
+            </div>
+          </div>
+          <div class="chips">
+            <span class="chip">08.00–21.00 WITA</span>
+            <span class="chip">WhatsApp Fast-Response</span>
+            <span class="chip">Data PO Terverifikasi</span>
+          </div>
+        </div>
+        <div>
+          <div style="display:grid; gap:10px">
+            <a class="btn" href="#po">Lihat PO Sekarang</a>
+            <a class="btn ghost" href="#order">📄 Form Pemesanan</a>
+          </div>
+        </div>
+      </div>
+      <div style="opacity:.65; font-size:.8rem; margin-top:16px">© <span id="year"></span> KlikBus. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Floating helper -->
+  <div class="floating-wa">
+    <a class="btn wa" id="floating-wa" aria-label="Chat Whatsapp">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.52 0 .2 5.32.2 11.86c0 2.09.55 4.13 1.6 5.93L0 24l6.38-1.75a11.78 11.78 0 0 0 5.68 1.44h.01c6.53 0 11.86-5.33 11.86-11.86 0-3.17-1.23-6.14-3.41-8.32Z" fill="#25D366"/>
+        <path d="M9.84 6.91c-.22-.49-.45-.5-.66-.5-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37s-1.05 1.02-1.05 2.48 1.08 2.87 1.23 3.07c.15.2 2.1 3.35 5.19 4.56.72.31 1.28.49 1.72.63.72.23 1.38.2 1.9.12.58-.09 1.8-.73 2.05-1.44.25-.71.25-1.32.17-1.44-.07-.12-.27-.2-.57-.35-.3-.15-1.8-.88-2.08-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.95 1.18-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.46-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.47.13-.62.14-.14.31-.37.46-.56.15-.2.2-.34.3-.54.1-.2.05-.39-.02-.54-.07-.15-.62-1.54-.86-2.11Z" fill="#fff"/>
+      </svg>
+      Chat Whatsapp
+    </a>
+  </div>
+
+  <script>
+    // Bungkus seluruh app di IIFE untuk mencegah "Illegal return" & kebocoran global
+    (()=>{
+      // ====== DATA PO (Edit di sini) ======
+            const PO_LIST = [
+        {
+          name: 'PO Cahaya Bone',
+          logo: 'assets/cahaya-bone/logo.png',
+          images: ['assets/cahaya-bone/1.jpg','assets/cahaya-bone/2.jpg','assets/cahaya-bone/3.jpg'],
+          armada: { hiace: {}, medium: {}, big: {} }
+        },
+        {
+          name: 'PO Sumber Abadi',
+          logo: 'assets/sumber-abadi/logo.png',
+          images: ['assets/sumber-abadi/1.jpg'],
+          armada: { medium: {} }
+        },
+        {
+          name: 'PO Sulawesi Trans',
+          logo: 'assets/sulawesi-trans/logo.png',
+          images: ['assets/sulawesi-trans/1.jpg','assets/sulawesi-trans/2.jpg'],
+          armada: { hiace: {}, medium: {} }
+        }
+      ];
+
+      // ====== UTIL ======
+      const idr = (n)=> new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(Number(n||0));
+      const waLink = (number, text='') => `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
+
+      // Base folder untuk foto armada
+      const IMG_BASE = 'image/';
+      const resolveImg = (p) => {
+        if(!p) return IMG_BASE + 'placeholder.jpg';
+        if(/^https?:\/\//.test(p) || p.startsWith('/')) return p; // absolute URL atau root path
+        return p.startsWith('image/') ? p : IMG_BASE + p; // tambahkan prefix jika perlu
+      };
+
+      // ====== MetaMask-safe helper (no-op in sandbox) ======
+      async function connectMetaMask(options = { requestAccounts:false }){
+        try{
+          if(!window.ethereum || typeof window.ethereum.request !== 'function'){
+            console.warn('MetaMask tidak tersedia di lingkungan ini.');
+            return { available:false, accounts:[], chainId:null };
+          }
+          let accounts = [];
+          if(options.requestAccounts){
+            accounts = await window.ethereum.request({ method:'eth_requestAccounts' });
+          }
+          const chainId = await window.ethereum.request({ method:'eth_chainId' });
+          return { available:true, accounts, chainId };
+        }catch(err){
+          console.error('MetaMask error (ditangani):', err);
+          return { available:true, accounts:[], chainId:null, error: String(err && err.message || err) };
+        }
+      }
+
+      const poGrid = document.getElementById('po-grid');
+      const searchInput = document.getElementById('search-po');
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const MAX_INITIAL = 3; let showAll = false;
+
+      function renderPOList(filterType='all', q=''){
+        poGrid.innerHTML = '';
+        const list = PO_LIST.filter(po=> po.name.toLowerCase().includes(q.toLowerCase()));
+        const baseMode = (filterType==='all' && !q);
+        const tooMany = baseMode && list.length > MAX_INITIAL && !showAll;
+        const displayed = tooMany ? list.slice(0, MAX_INITIAL) : list;
+
+        displayed.forEach((po, idx)=>{
+          const has = { hiace: ('hiace' in po.armada), medium: ('medium' in po.armada), big: ('big' in po.armada) };
+          if(filterType!=='all' && !has[filterType]) return;
+
+          const rawImgs = (Array.isArray(po.images) && po.images.length) ? po.images : ['placeholder.jpg'];
+          const imagesArr = rawImgs.map(resolveImg);
+          const firstImg = imagesArr[0] ? `<img src="${imagesArr[0]}" alt="${po.name}" onerror="this.onerror=null; this.src=\'image/placeholder.jpg\'"/>` : '🚌';
+          const dotsHtml = imagesArr.map((_,i)=> `<span class=\"dot ${i===0?'active':''}\" data-i=\"${i}\" aria-label=\"Slide ${i+1}\"></span>`).join('\n');
+          const carouselHtml = `
+            <div class=\"fleet-cover carousel\" data-idx=\"${idx}\">
+              <div class=\"carousel-frame\">${firstImg}</div>
+              ${imagesArr.length>1 ? `<button class=\"nav prev\" aria-label=\"Sebelumnya\">‹</button><button class=\"nav next\" aria-label=\"Berikutnya\">›</button><div class=\"dots\">${dotsHtml}</div>` : ``}
+            </div>`;
+          const priceChip = (label,key)=> (po.armada[key] && Number.isFinite(+po.armada[key].from))
+            ? `<span class=\"chip\"><strong>${label}</strong> mulai <span class=\"price\">${idr(po.armada[key].from)}</span> <small>/hari</small></span>`
+            : '';
+
+          const card = document.createElement('article');
+          card.className = 'card po-card';
+          card.setAttribute('data-has', Object.keys(has).filter(k=>has[k]).join(','));
+          card.innerHTML = `
+            <div class=\"po-head\">
+              <img src=\"${po.logo}\" alt=\"${po.name}\" onerror=\"this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2236%22 height=%2236%22%3E%3Crect width=%22100%25%22 height=%22100%25%22 rx=%229%22 fill=%22%23ffffff%22/%3E%3Ctext x=%2250%25%22 y=%2255%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2210%22 font-family=%22Arial%22 fill=%22%23910606%22%3EPO%3C/text%3E%3C/svg%3E'\"/>
+              <div>
+                <strong>${po.name}</strong>
+              </div>
+            </div>
+            ${carouselHtml}
+            <div class=\"chips\">
+              ${priceChip('Minibus','hiace')}
+              ${priceChip('Medium','medium')}
+              ${priceChip('Big Bus','big')}
+            </div>
+            <div class=\"po-actions\">
+              ${has.hiace? `<a class=\"btn\" data-order data-type=\"hiace\" data-idx=\"${idx}\">Pesan Minibus</a>`:''}
+              ${has.medium? `<a class=\"btn\" data-order data-type=\"medium\" data-idx=\"${idx}\">Pesan Medium</a>`:''}
+              ${has.big? `<a class=\"btn\" data-order data-type=\"big\" data-idx=\"${idx}\">Pesan Big Bus</a>`:''}
+            </div>
+            <p class=\"muted\" style=\"font-size:.8rem\">Harga estimasi — final saat chat dengan PO.</p>
+          `;
+          poGrid.appendChild(card);
+
+          if (imagesArr.length > 1) {
+            const cover = card.querySelector('.carousel');
+            const frame = cover.querySelector('.carousel-frame img');
+            if(frame){ frame.onerror = ()=>{ frame.onerror=null; frame.src='image/placeholder.jpg'; }; }
+            let ci = 0;
+            const go = (n)=>{ ci = (n + imagesArr.length) % imagesArr.length; frame.src = imagesArr[ci]; cover.querySelectorAll('.dot').forEach((d,k)=> d.classList.toggle('active', k===ci)); };
+            cover.querySelector('.nav.prev')?.addEventListener('click', ()=> go(ci-1));
+            cover.querySelector('.nav.next')?.addEventListener('click', ()=> go(ci+1));
+            cover.querySelectorAll('.dot').forEach(d=> d.addEventListener('click', ()=> go(+d.dataset.i)));
+          }
+        });
+
+        if(!poGrid.children.length){
+          poGrid.innerHTML = '<div class="muted">Tidak ada PO yang cocok dengan filter.</div>';
+        }
+
+        // Toggle Lihat Semua / Lebih Sedikit
+        const moreWrap = document.getElementById('po-more');
+        if (baseMode && list.length > MAX_INITIAL) {
+          const remaining = Math.max(0, list.length - MAX_INITIAL);
+          moreWrap.innerHTML = `<div class=\"more-wrap\" style=\"display:flex;justify-content:center;margin-top:8px\">\n            <button id=\"btn-more\" class=\"filter-btn\" aria-expanded=\"${!tooMany}\">${tooMany ? `Lihat semua PO (${remaining} lagi)` : 'Tampilkan lebih sedikit'}</button>\n          </div>`;
+          document.getElementById('btn-more').onclick = ()=>{ showAll = !showAll; renderPOList(filterType, q); };
+        } else {
+          moreWrap.innerHTML = '';
+        }
+
+        // Rebind for new buttons
+        document.querySelectorAll('[data-order]').forEach(btn=>{
+          btn.addEventListener('click', ()=>{
+            const idx = +btn.getAttribute('data-idx');
+            const type = btn.getAttribute('data-type');
+            const po = PO_LIST[idx];
+            const armadaLabel = type==='hiace' ? 'Minibus 8–14' : (type==='medium' ? 'Medium Bus 30' : 'Big Bus 40');
+            const price = (po.armada[type] && Number.isFinite(+po.armada[type].from)) ? ` (estimasi mulai ${idr(po.armada[type].from)}/hari)` : '';
+            const text = [
+              `Halo Admin KlikBus,`,
+              `Saya ingin sewa ${armadaLabel}${price} (PO: ${po.name}).`,
+              `Tanggal: ____ (Jam: ____)`,
+              `Durasi: ____ hari`,
+              `Jemput: ____`,
+              `Tujuan: ____`,
+              `Penumpang: ____ orang`,
+              `Nama: ____`,
+              `Terima kasih.`
+            ].filter(Boolean).join('\n');
+            window.open(waLink(KLIKBUS.wa, text),'_blank');
+          });
+        });
+      }
+
+      // Init render
+      const params = new URLSearchParams(location.search);
+      if (params.has('q')) { searchInput.value = params.get('q'); }
+      renderPOList(document.querySelector('.filter-btn.active')?.dataset.type || 'all', searchInput.value);
+
+      // Search & filter
+      searchInput.addEventListener('input', ()=>{
+        const active = document.querySelector('.filter-btn.active')?.dataset.type || 'all';
+        showAll = true; // saat mencari, tampilkan semua hasil
+        renderPOList(active, searchInput.value);
+        const url = new URL(location);
+        if (searchInput.value) url.searchParams.set('q', searchInput.value); else url.searchParams.delete('q');
+        history.replaceState({}, '', url);
+      });
+      filterBtns.forEach(b=> b.addEventListener('click', ()=>{
+        filterBtns.forEach(x=>x.classList.remove('active'));
+        b.classList.add('active');
+        showAll = true; // saat filter, tampilkan semua hasil filter
+        renderPOList(b.dataset.type, searchInput.value);
+      }));
+
+      // ====== FORM ======
+      const poSelect = document.getElementById('poSelect');
+      const armadaSelect = document.getElementById('armada');
+      const typeKeyFromLabel = (label)=> label.startsWith('Minibus') ? 'hiace' : (label.startsWith('Medium') ? 'medium' : 'big');
+      const getHas = (po)=> ({ hiace: !!po.armada.hiace, medium: !!po.armada.medium, big: !!po.armada.big });
+      function syncArmadaOptions(){
+        const po = PO_LIST[+poSelect.value];
+        const has = getHas(po);
+        Array.from(armadaSelect.options).forEach(opt=>{
+          const key = typeKeyFromLabel(opt.value);
+          opt.disabled = !has[key];
+        });
+        if(armadaSelect.selectedOptions[0]?.disabled){
+          const firstAvail = Array.from(armadaSelect.options).find(o=>!o.disabled);
+          if(firstAvail) armadaSelect.value = firstAvail.value;
+        }
+      }
+      PO_LIST.forEach((po,i)=>{
+        const opt=document.createElement('option');
+        opt.value=i; opt.textContent=po.name; poSelect.appendChild(opt);
+      });
+      // Sinkronkan opsi armada awal berdasarkan PO terpilih
+      syncArmadaOptions();
+
+      document.getElementById('send-wa').addEventListener('click', ()=>{
+        const po = PO_LIST[+poSelect.value];
+        const payload = {
+          po: po.name,
+          armada: document.getElementById('armada').value,
+          tanggal: document.getElementById('tanggal').value,
+          jam: document.getElementById('jam').value,
+          durasi: document.getElementById('durasi').value,
+          jemput: document.getElementById('jemput').value,
+          tujuan: document.getElementById('tujuan').value,
+          penumpang: document.getElementById('penumpang').value,
+          nama: document.getElementById('nama').value,
+          catatan: document.getElementById('catatan').value,
+        };
+        const lines = [
+          `Halo Admin KlikBus,`,
+          `Saya ingin sewa ${payload.armada}. (PO: ${payload.po})`,
+          `Tanggal: ${payload.tanggal || '____'} ${payload.jam? '('+payload.jam+')':''}`,
+          `Durasi: ${payload.durasi || '____'} hari`,
+          `Jemput: ${payload.jemput || '____'}`,
+          `Tujuan: ${payload.tujuan || '____'}`,
+          `Penumpang: ${payload.penumpang || '____'} orang`,
+          `Nama: ${payload.nama || '____'}`,
+          payload.catatan? `Catatan: ${payload.catatan}`: null,
+          `Dikirim via KlikBus. Terima kasih.`
+        ].filter(Boolean).join('\n');
+        window.open(waLink(KLIKBUS.wa, lines), '_blank');
+      });
+
+      const manualBtn=document.getElementById('cta-wa-manual');
+      poSelect.addEventListener('change', ()=>{
+        if(manualBtn) manualBtn.href = waLink(KLIKBUS.wa, 'Halo Admin KlikBus, saya ingin bertanya ketersediaan armada.');
+        syncArmadaOptions();
+      });
+      // Init manual
+      syncArmadaOptions();
+      manualBtn.href = waLink(KLIKBUS.wa, 'Halo Admin KlikBus, saya ingin bertanya ketersediaan armada.');
+
+      // Floating WA -> arahkan user pilih PO
+      document.getElementById('floating-wa').addEventListener('click', ()=>{
+        document.getElementById('order').scrollIntoView({behavior:'smooth'});
+      });
+
+      // Year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // ====== Minimal Tests (runtime assertions) ======
+      (function(){
+        try {
+          // Test newline join works and doesn't throw
+          console.assert('a\nb' === ['a','b'].join('\n'), 'Join with "\\n" should create newline');
+          // Test PO list exists
+          console.assert(Array.isArray(PO_LIST) && PO_LIST.length >= 1, 'PO_LIST harus array berisi item');
+          // Test WA link format
+          const wa = waLink('6285','halo');
+          console.assert(wa.startsWith('https://wa.me/'), 'waLink harus pakai wa.me');
+          // Test resolveImg helper
+          console.assert(resolveImg('bus.jpg').startsWith('image/'), 'resolveImg harus menambahkan prefix image/');
+          console.assert(resolveImg('/cdn/bus.jpg') === '/cdn/bus.jpg', 'resolveImg tidak mengubah path absolut');
+          // Test: armada options reflect availability — Sumber Abadi: Medium only, Sulawesi Trans: Minibus + Medium
+          const idxSA = PO_LIST.findIndex(p=>/Sumber Abadi/i.test(p.name));
+          const idxST = PO_LIST.findIndex(p=>/Sulawesi Trans/i.test(p.name));
+          if(idxSA >= 0){ const prev = poSelect.value; poSelect.value = String(idxSA); syncArmadaOptions();
+            const opts = Array.from(document.getElementById('armada').options);
+            const oMin = opts.find(o=>o.value.startsWith('Minibus'));
+            const oMed = opts.find(o=>o.value.startsWith('Medium'));
+            const oBig = opts.find(o=>o.value.startsWith('Big'));
+            console.assert(oMin.disabled && !oMed.disabled && oBig.disabled, 'PO Sumber Abadi harus hanya Medium');
+            poSelect.value = prev; syncArmadaOptions(); }
+          if(idxST >= 0){ const prev = poSelect.value; poSelect.value = String(idxST); syncArmadaOptions();
+            const opts = Array.from(document.getElementById('armada').options);
+            const oMin = opts.find(o=>o.value.startsWith('Minibus'));
+            const oMed = opts.find(o=>o.value.startsWith('Medium'));
+            const oBig = opts.find(o=>o.value.startsWith('Big'));
+            console.assert(!oMin.disabled && !oMed.disabled && oBig.disabled, 'PO Sulawesi Trans harus Minibus dan Medium (tanpa Big)');
+            poSelect.value = prev; syncArmadaOptions(); }
+          // Test: when >3 PO and baseMode, default should limit to MAX_INITIAL
+          if(PO_LIST.length > 3){
+            const saved = showAll; const prevQ = searchInput.value; const activeType = document.querySelector('.filter-btn.active')?.dataset.type || 'all';
+            showAll = false; searchInput.value=''; renderPOList('all','');
+            const cards = document.querySelectorAll('#po-grid .po-card').length;
+            console.assert(cards <= MAX_INITIAL, 'Default render harus batasi ke MAX_INITIAL saat >3 PO');
+            // restore
+            showAll = saved; renderPOList(activeType, prevQ);
+          }
+          // Test: carousel dots count equals images length (for first card if available)
+          const firstCard = document.querySelector('#po-grid .po-card');
+          if(firstCard){
+            const dots = firstCard.querySelectorAll('.dots .dot').length;
+            const imgsLen = (PO_LIST[0] && Array.isArray(PO_LIST[0].images)) ? PO_LIST[0].images.length : 0;
+            if(imgsLen > 1) console.assert(dots === imgsLen, 'Jumlah dot harus sama dengan jumlah gambar');
+          }
+          // Test: WA text includes PO name
+          if(PO_LIST[0]){
+            const sample = ['Halo Admin KlikBus,',`Saya ingin sewa Minibus 8–14 (PO: ${PO_LIST[0].name}).`].join('\n');
+            console.assert(sample.includes(PO_LIST[0].name), 'WA text harus memuat nama PO');
+          }
+          // Test: JSON-LD schema is valid JSON (no comments / stray tokens)
+          const ld = document.querySelector('script[type="application/ld+json"]');
+          console.assert(!!ld, 'JSON-LD <script> harus ada');
+          if(ld){ JSON.parse(ld.textContent); }
+        } catch (e){
+          console.error('Self-test gagal:', e);
+        }
+      })();
+
+      // ====== Extra Tests: MetaMask helper should not throw ======
+      (async function(){
+        try{
+          const res = await connectMetaMask({ requestAccounts:false });
+          console.assert(res && typeof res === 'object', 'connectMetaMask harus mengembalikan object');
+          console.assert('available' in res, 'connectMetaMask response harus punya properti available');
+        }catch(e){
+          console.error('Test MetaMask gagal:', e);
+        }
+      })();
+    })();
+  </script>
+
+  <!-- SEO Schema (valid JSON, tanpa komentar) -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "KlikBus — Sulawesi Selatan",
+      "url": "https://klikbus.id/",
+      "logo": "https://klikbus.id/image/Logoklikbus.png",
+      "sameAs": [
+        "https://wa.me/6285256473344"
+      ],
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "areaServed": "ID",
+        "availableLanguage": ["id"],
+        "telephone": "+62-852-5647-3344"
+      }],
+      "address": {"@type":"PostalAddress","addressCountry":"ID"}
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "KlikBus",
+      "url": "https://klikbus.id/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://klikbus.id/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"Bagaimana cara memesan bus?","acceptedAnswer":{"@type":"Answer","text":"Pilih PO dan armada, isi form singkat, lalu klik Kirim ke WhatsApp — chat langsung ke Admin KlikBus."}},
+        {"@type":"Question","name":"Berapa harga sewa Minibus/Medium/Big Bus?","acceptedAnswer":{"@type":"Answer","text":"Harga mulai berbeda tiap PO dan menyesuaikan rute, tanggal, serta durasi. Lihat kisaran pada kartu PO atau chat Admin KlikBus untuk penawaran resmi."}},
+        {"@type":"Question","name":"Area layanan KlikBus?","acceptedAnswer":{"@type":"Answer","text":"Pickup dari wilayah Sulawesi Selatan (Makassar, Parepare, Pinrang, dll). Tujuan fleksibel dalam dan luar provinsi sesuai kebijakan PO."}},
+        {"@type":"Question","name":"Apakah perlu DP?","acceptedAnswer":{"@type":"Answer","text":"Umumnya dibutuhkan uang muka untuk mengunci tanggal. Besaran DP mengikuti kebijakan PO."}}
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Beranda","item":"https://klikbus.id/"},
+        {"@type":"ListItem","position":2,"name":"Sewa Bus","item":"https://klikbus.id/"}
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Sewa Bus & Minibus",
+      "provider": {"@type":"Organization","name":"KlikBus","url":"https://klikbus.id/"},
+      "areaServed": ["Makassar","Parepare","Pinrang","Sidrap","Barru","Tana Toraja","Malino","Bira","Bone","Wajo","Soppeng","Gowa","Maros","Pangkep","Luwu","Palopo","Enrekang","Bulukumba","Sinjai","Jeneponto","Takalar"],
+      "availableChannel": {"@type":"ServiceChannel","serviceUrl":"https://klikbus.id/","availableLanguage":["id"]}
+    }
+  ]
+  </script>
+</body>
+</html>
