@@ -136,7 +136,30 @@
     footer .btn.ghost{--_fg:#ffffff;border-color:rgba(255,255,255,.5)}
     footer .btn.secondary{--_bg:transparent;--_fg:#ffffff;border-color:rgba(255,255,255,.5)}
     footer .muted{color:rgba(255,255,255,.85) !important}
-  </style>
+
+/* Modern form UI */
+.form-modern .field{position:relative;display:grid;gap:6px}
+.form-modern .control{display:flex;align-items:center;gap:10px;border:1px solid #e2e8f0;background:#fff;border-radius:12px;padding:10px 12px;box-shadow:0 1px 0 var(--ring)}
+.form-modern input,.form-modern select,.form-modern textarea{border:0;outline:0;width:100%;background:transparent;font:inherit;color:inherit}
+.form-modern .control:focus-within{border-color:var(--green);box-shadow:0 0 0 3px rgba(6,177,250,.15)}
+.form-modern .floating>label{position:absolute;left:12px;top:50%;transform:translateY(-50%);background:#fff;padding:0 6px;color:#64748b;pointer-events:none;transition:.15s;font-size:.95rem}
+.form-modern .floating:focus-within>label,.form-modern .floating.has-value>label{top:-8px;font-size:.75rem;color:var(--green)}
+.quick{display:flex;flex-wrap:wrap;gap:8px}
+.quick .chip{cursor:pointer}
+.stepper{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.stepper .dot{width:8px;height:8px;border-radius:999px;background:#e2e8f0}
+.stepper .dot.active{background:var(--green)}
+.progress{height:8px;background:#e2e8f0;border-radius:999px;overflow:hidden;margin-bottom:12px}
+.progress .bar{height:100%;width:0%;background:var(--green)}
+.actions{display:flex;gap:8px;justify-content:space-between;margin-top:6px}
+.actions .spacer{flex:1}
+.btn[disabled]{opacity:.55;cursor:not-allowed;filter:grayscale(.2)}
+.preview{background:#0b1220;color:#e2e8f0;border-radius:12px;padding:10px 12px;border:1px solid #0f1a2e;font-family:ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap;line-height:1.4}
+
+/* No-Nav variant: align actions to right and hide nav buttons if exist */
+.actions{justify-content:flex-end}
+#prev-step, #next-step{display:none !important}
+</style>
 </head>
 <body>
   <script>
@@ -204,67 +227,109 @@
     <div class="divider" style="height:1px;background:linear-gradient(90deg, rgba(0,0,0,0), rgba(2,6,23,.2), rgba(0,0,0,0)); margin: 20px 0;"></div>
 
     <section class="grid" id="order" style="grid-template-columns:1.2fr .8fr">
-      <div class="card" style="padding:18px">
-        <h2 style="margin-top:0">Pemesanan Cepat (WhatsApp)</h2>
-        <p class="muted" style="margin-bottom:10px">Pilih PO & isi data singkat. Pesan terkirim ke WhatsApp Admin MultiBus.</p>
-        <form id="wa-form" class="stack" onsubmit="return false;">
-          <div class="grid" style="grid-template-columns:1fr 1fr">
-            <label class="stack">
-              <span class="muted">Pilih PO</span>
-              <select id="poSelect" required></select>
-            </label>
-            <label class="stack">
-              <span class="muted">Jenis Armada</span>
-              <select id="armada" required>
-                <option value="Minibus 8–14">Minibus (8–14 seat)</option>
-                <option value="Medium Bus 30">Medium Bus (30 seat)</option>
-                <option value="Big Bus 40">Big Bus (40 seat)</option>
-              </select>
-            </label>
+      <div class="card form-modern" style="padding:18px">
+  <div class="stepper" aria-hidden="true">
+    <span class="dot active" data-step="1"></span>
+    <span class="dot" data-step="2"></span>
+    <span class="dot" data-step="3"></span>
+  </div>
+  <div class="progress" aria-hidden="true"><div class="bar" id="progress-bar"></div></div>
+
+  <h2 style="margin:0 0 6px 0">Pemesanan Cepat</h2>
+  <p class="muted" style="margin:0 0 12px">3 langkah: Pilih PO → Detail Perjalanan → Review & Kirim WhatsApp</p>
+
+  <form id="wa-form" class="stack" onsubmit="return false;">
+    <!-- STEP 1 -->
+    <div class="stack step" data-step="1">
+      <div class="grid" style="grid-template-columns:1fr 1fr">
+        <div class="field floating">
+          <div class="control">
+            <select id="poSelect" required></select>
           </div>
-          <div class="grid" style="grid-template-columns:1fr 1fr">
-            <label class="stack">
-              <span class="muted">Tanggal Jemput</span>
-              <input type="date" id="tanggal" required />
-            </label>
-            <label class="stack">
-              <span class="muted">Jam Jemput</span>
-              <input type="time" id="jam" />
-            </label>
+          <label for="poSelect">Pilih PO</label>
+        </div>
+        <div class="field floating">
+          <div class="control">
+            <select id="armada" required>
+              <option value="Minibus 8–14" data-min="1"  data-max="14">Minibus (8–14 seat)</option>
+              <option value="Medium Bus 30" data-min="15" data-max="30">Medium Bus (30 seat)</option>
+              <option value="Big Bus 40"    data-min="31" data-max="40">Big Bus (40 seat)</option>
+            </select>
           </div>
-          <div class="grid" style="grid-template-columns:1fr 1fr">
-            <label class="stack">
-              <span class="muted">Durasi (hari)</span>
-              <input type="number" id="durasi" min="1" value="1" />
-            </label>
-            <label class="stack">
-              <span class="muted">Jumlah Penumpang</span>
-              <input type="number" id="penumpang" min="1" placeholder="cth: 30" />
-            </label>
-          </div>
-          <label class="stack">
-            <span class="muted">Titik Jemput</span>
-            <input type="text" id="jemput" placeholder="Contoh: Perwakilan / alamat lengkap" />
-          </label>
-          <label class="stack">
-            <span class="muted">Tujuan</span>
-            <input type="text" id="tujuan" placeholder="Contoh: Makassar / Parepare / dll" />
-          </label>
-          <label class="stack">
-            <span class="muted">Nama Pemesan</span>
-            <input type="text" id="nama" placeholder="Nama Anda" />
-          </label>
-          <label class="stack">
-            <span class="muted">Catatan Tambahan</span>
-            <textarea id="catatan" rows="3" placeholder="Penjelasan rute, stop point, dll (opsional)"></textarea>
-          </label>
-          <div class="po-actions">
-            <button class="btn" id="send-wa">Kirim ke WhatsApp Admin</button>
-            <a class="btn secondary" id="cta-wa-manual" target="_blank" rel="noopener">Chat Admin</a>
-          </div>
-          <p class="notice" style="font-size:.95rem;color:#0f172a;background:#FFFBEB;border:1px solid #FDE68A;padding:10px 12px;border-radius:12px">Harga per PO dapat berbeda tergantung rute, tanggal, dan durasi. Tanyakan promo ke Admin MultiBus.</p>
-        </form>
+          <label for="armada">Jenis Armada</label>
+        </div>
       </div>
+      <div class="grid" style="grid-template-columns:1fr 1fr">
+        <div class="field floating">
+          <div class="control"><input type="date" id="tanggal" required></div>
+          <label for="tanggal">Tanggal Jemput</label>
+        </div>
+        <div class="field floating">
+          <div class="control"><input type="time" id="jam"></div>
+          <label for="jam">Jam Jemput</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="stack step" data-step="2" hidden>
+      <div class="grid" style="grid-template-columns:1fr 1fr">
+        <div class="field floating">
+          <div class="control"><input type="number" id="durasi" min="1" value="1" required></div>
+          <label for="durasi">Durasi (hari)</label>
+        </div>
+        <div class="field floating">
+          <div class="control"><input type="number" id="penumpang" min="1" placeholder="cth: 30" required></div>
+          <label for="penumpang">Jumlah Penumpang</label>
+        </div>
+      </div>
+      <div class="quick">
+        <span class="chip" data-dur="1">1 hari</span>
+        <span class="chip" data-dur="2">2 hari</span>
+        <span class="chip" data-dur="3">3 hari</span>
+        <span class="chip" data-seat="12">12 org</span>
+        <span class="chip" data-seat="30">30 org</span>
+        <span class="chip" data-seat="40">40 org</span>
+      </div>
+      <div class="grid" style="grid-template-columns:1fr 1fr">
+        <div class="field floating">
+          <div class="control"><input type="text" id="jemput" placeholder=""></div>
+          <label for="jemput">Titik Jemput</label>
+        </div>
+        <div class="field floating">
+          <div class="control"><input type="text" id="tujuan" placeholder=""></div>
+          <label for="tujuan">Tujuan</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="stack step" data-step="3" hidden>
+      <div class="field floating">
+        <div class="control"><input type="text" id="nama" placeholder="" required></div>
+        <label for="nama">Nama Pemesan</label>
+      </div>
+      <div class="field floating">
+        <div class="control"><textarea id="catatan" rows="3" placeholder=""></textarea></div>
+        <label for="catatan">Catatan Tambahan</label>
+      </div>
+
+      <div class="preview" id="wa-preview" aria-live="polite"></div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap">
+        <button class="btn secondary" type="button" id="copy-wa">Salin Pesan</button>
+        <a class="btn secondary" id="cta-wa-manual" target="_blank" rel="noopener">Chat Admin</a>
+      </div>
+      <p class="notice" style="font-size:.95rem;color:#0f172a;background:#FFFBEB;border:1px solid #FDE68A;padding:10px 12px;border-radius:12px">
+        Harga per PO dapat berbeda tergantung rute, tanggal, dan durasi. Tanyakan promo ke Admin MultiBus.
+      </p>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button class="btn" id="send-wa" type="button" hidden>Kirim ke WhatsApp Admin</button>
+    </div>
+  </form>
+</div>
       <aside class="stack" style="gap:14px">
         <div class="card" style="padding:16px">
           <h3 style="margin:0 0 4px 0">Tentang MultiBus</h3>
@@ -667,7 +732,163 @@
         }
       })();
     })();
-  </script>
+
+// ====== FORM UI ENHANCER (Wizard + UX) ======
+(function(){
+  // Helper floating label
+  function syncFloating(){
+    document.querySelectorAll('.floating').forEach(w=>{
+      const el = w.querySelector('input,select,textarea');
+      if(!el) return;
+      function update(){ w.classList.toggle('has-value', !!el.value); }
+      ['change','input','blur'].forEach(ev=> el.addEventListener(ev, update));
+      update();
+    });
+  }
+
+  // Min date = today (local)
+  function todayLocal(){ const d=new Date(); d.setMinutes(d.getMinutes()-d.getTimezoneOffset()); return d.toISOString().slice(0,10); }
+  const tanggal = document.getElementById('tanggal');
+  if(tanggal){ tanggal.min = todayLocal(); }
+
+  // Wizard
+  let step = 1; const stepsTotal = 3;
+  const bar = document.getElementById('progress-bar');
+  const btnPrev = document.getElementById('prev-step');
+  const btnNext = document.getElementById('next-step');
+  const btnSend = document.getElementById('send-wa');
+
+  function showStep(n){
+    step = n;
+    document.querySelectorAll('.step').forEach(el=> el.hidden = (+el.dataset.step !== step));
+    const dots = document.querySelectorAll('.stepper .dot');
+    dots.forEach((d,i)=> d.classList.toggle('active', i < step));
+    if(bar){ bar.style.width = ((step-1)/(stepsTotal-1))*100 + '%'; }
+    if(btnPrev){ btnPrev.disabled = (step===1); }
+    if(btnNext){ btnNext.hidden = (step===stepsTotal); }
+    if(btnSend){ btnSend.hidden = (step!==stepsTotal); }
+    syncNextBtn();
+    updatePreview();
+  }
+
+  // Validasi per step
+  const need = (id)=> (document.getElementById(id)?.value || '').trim();
+  function validStep(s){
+    if(s===1) return need('poSelect')!=='' && need('armada')!=='' && need('tanggal')!=='';
+    if(s===2) return (+need('durasi')>0) && (+need('penumpang')>0) && need('jemput')!=='' && need('tujuan')!=='';
+    if(s===3) return need('nama')!=='';
+    return true;
+  }
+  function syncNextBtn(){
+    if(btnNext && !btnNext.hidden) btnNext.disabled = !validStep(step);
+    if(btnSend && !btnSend.hidden) btnSend.disabled = !validStep(3);
+  }
+
+  btnPrev?.addEventListener('click', ()=> showStep(Math.max(1, step-1)));
+  btnNext?.addEventListener('click', ()=> { if(validStep(step)) showStep(Math.min(stepsTotal, step+1)); });
+  showStep(1);
+
+  // Auto-advance (no Prev/Next buttons)
+  let autoTimer=null;
+  function scheduleAuto(){
+    clearTimeout(autoTimer);
+    autoTimer = setTimeout(()=>{
+      if(step===1 && validStep(1)) showStep(2);
+      else if(step===2 && validStep(2)) showStep(3);
+    }, 250);
+  }
+
+  // Quick chips
+  document.querySelectorAll('.quick .chip').forEach(ch=>{
+    const dur = ch.getAttribute('data-dur');
+    const seat = ch.getAttribute('data-seat');
+    if(dur) ch.addEventListener('click', ()=> { const el=document.getElementById('durasi'); if(el){ el.value=dur; el.dispatchEvent(new Event('input')); el.dispatchEvent(new Event('change')); }});
+    if(seat) ch.addEventListener('click', ()=> { const el=document.getElementById('penumpang'); if(el){ el.value=seat; el.dispatchEvent(new Event('input')); el.dispatchEvent(new Event('change')); }});
+  });
+
+  // Live preview + copy
+  function updatePreview(){
+    const po = (window.PO_LIST && window.PO_LIST[+document.getElementById('poSelect').value]) || { name:'(pilih PO)' };
+    const armada = need('armada') || '____';
+    const tgl = need('tanggal') || '____';
+    const jam = need('jam');
+    const txt = [
+      'Halo Admin MultiBus,',
+      `Saya ingin sewa ${armada}. (PO: ${po.name})`,
+      `Tanggal: ${tgl}${jam? ' ('+jam+')':''}`,
+      `Durasi: ${need('durasi') || '____'} hari`,
+      `Jemput: ${need('jemput') || '____'}`,
+      `Tujuan: ${need('tujuan') || '____'}`,
+      `Penumpang: ${need('penumpang') || '____'} orang`,
+      `Nama: ${need('nama') || '____'}`,
+      need('catatan')? `Catatan: ${need('catatan')}`: null,
+      'Dikirim via MultiBus. Terima kasih.'
+    ].filter(Boolean).join('\n');
+    const prev = document.getElementById('wa-preview');
+    if(prev) prev.textContent = txt;
+
+    const btnCopy = document.getElementById('copy-wa');
+    if(btnCopy){
+      btnCopy.onclick = ()=> {
+        navigator.clipboard.writeText(txt).then(()=>{
+          const old = btnCopy.textContent; btnCopy.textContent='Tersalin ✓'; setTimeout(()=> btnCopy.textContent=old, 1200);
+        }).catch(()=>{});
+      };
+    }
+    syncNextBtn();
+  }
+  ['poSelect','armada','tanggal','jam','durasi','penumpang','jemput','tujuan','nama','catatan']
+    .forEach(id=> ['input','change'].forEach(ev=> document.getElementById(id)?.addEventListener(ev, ()=>{ updatePreview(); syncFloating(); scheduleAuto(); })));
+  updatePreview(); syncFloating();
+
+  // Persist ke localStorage
+  const KEY='mb.order.';
+  ['poSelect','armada','tanggal','jam','durasi','penumpang','jemput','tujuan','nama','catatan'].forEach(id=>{
+    const el=document.getElementById(id); if(!el) return;
+    const val = localStorage.getItem(KEY+id);
+    if(val!==null){ el.value = val; el.dispatchEvent(new Event('change')); }
+    el.addEventListener('change', ()=> localStorage.setItem(KEY+id, el.value));
+    el.addEventListener('input', ()=> localStorage.setItem(KEY+id, el.value));
+  });
+
+  // Update CTA manual WA
+  const manualBtn=document.getElementById('cta-wa-manual');
+  if(manualBtn) manualBtn.href = (typeof waLink==='function')
+    ? waLink(MULTIBUS.wa,'Halo Admin MultiBus, saya ingin bertanya ketersediaan armada.')
+    : manualBtn.href;
+
+  // Disable kirim sampai valid
+  syncNextBtn();
+
+  // ====== Seat Preset (auto pilih armada dari jumlah penumpang) ======
+  (function seatPresetInit(){
+    const seatEl   = document.getElementById('penumpang');
+    const armadaEl = document.getElementById('armada');
+    if(!seatEl || !armadaEl) return;
+    function pickArmadaForSeats(seats){
+      if(!(seats > 0)) return;
+      let chosenIndex = armadaEl.options.length - 1; // default ke opsi terakhir (Big Bus)
+      for(let i=0; i<armadaEl.options.length; i++){
+        const opt = armadaEl.options[i];
+        const min = Number(opt.dataset.min || 0);
+        const max = Number(opt.dataset.max || 999);
+        if(seats >= min && seats <= max){ chosenIndex = i; break; }
+      }
+      if(armadaEl.selectedIndex !== chosenIndex){
+        armadaEl.selectedIndex = chosenIndex;
+        armadaEl.dispatchEvent(new Event('change'));
+      }
+    }
+    ['input','change'].forEach(ev => seatEl.addEventListener(ev, ()=>{
+      const seats = parseInt(seatEl.value, 10);
+      pickArmadaForSeats(seats);
+    }));
+    const initSeats = parseInt(seatEl.value, 10);
+    if(initSeats > 0) pickArmadaForSeats(initSeats);
+  })();
+
+})();
+</script>
 
   <!-- SEO Schema (valid JSON, tanpa komentar) -->
   <script type="application/ld+json">
