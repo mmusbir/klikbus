@@ -23,32 +23,40 @@
   <meta name="twitter:title" content="MultiBus — Sewa Bus Sulawesi Selatan (Multi‑PO)" />
   <meta name="twitter:description" content="Sewa bus & minibus Multi‑PO di Sulawesi Selatan: Makassar, Parepare, Pinrang, Sidrap, Barru, Toraja, Malino, Bira, Gowa, Maros, Bone, Wajo, Palopo, Soppeng, Pangkep, Luwu. Klik untuk pesan via WhatsApp." />
   <meta name="twitter:image" content="image/og-cover.jpg" />
-  <meta name="keywords" content="sewa bus sulawesi selatan, sewa bus sulsel, sewa bus makassar, sewa bus parepare, sewa bus pinrang, sewa bus sidrap, sewa bus barru, sewa bus toraja, sewa bus malino, sewa bus bira, sewa bus gowa, sewa bus maros, sewa bus bone, sewa bus wajo, sewa bus palopo, sewa bus soppeng, sewa bus pangkep, sewa bus luwu, sewa minibus sulsel, carter bus sulsel, medium bus sulsel, big bus sulsel, multibus"
+  <meta name="keywords" content="sewa bus sulawesi selatan, sewa bus sulsel, sewa bus makassar, sewa bus parepare, sewa bus pinrang, sewa bus sidrap, sewa bus barru, sewa bus toraja, sewa bus malino, sewa bus bira, sewa bus gowa, sewa bus maros, sewa bus bone, sewa bus wajo, sewa bus palopo, sewa bus soppeng, sewa bus pangkep, sewa bus luwu, sewa minibus sulsel, carter bus sulsel, medium bus sulsel, big bus sulsel, multibus" />
   <link rel="apple-touch-icon" href="image/favicon/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="image/favicon/favicon-32x32.png" />
 
   <style>
-
     :root{
-      --orange:#011576; /* Kuning */
-      --green:#06B1FA;  /* Merah tua (pengganti biru) */
-      --text:#0f172a;   /* Slate-900 */
-      --muted:#283445;  /* Slate-600 */
-      --bg:#f1f2ffdd;     /* Latar kuning muda */
+      --orange:#011576;
+      --green:#06B1FA;
+      --text:#0f172a;
+      --muted:#283445;
+      --bg:#f1f2ffdd;
       --card:#ffffff;
       --ring: rgba(0,0,0,.12);
       --radius: 18px;
     }
+
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, "Apple Color Emoji","Segoe UI Emoji";color:var(--text);background:var(--bg);}
-    img{max-width:100%;display:block}
+    html,body{
+      margin:0;padding:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);background:var(--bg);
+      -webkit-text-size-adjust:100%;
+      text-rendering:optimizeLegibility;
+    }
+    img{max-width:100%;display:block;height:auto}
     a{color:inherit;text-decoration:none}
+    :focus-visible{outline:3px solid var(--green); outline-offset:3px; border-radius:10px}
+
     /* Layout */
-    .container{max-width:1180px;margin-inline:auto;padding:24px}
+    .container{max-width:1180px;margin-inline:auto;padding:clamp(16px, 3vw, 24px)}
     header{position:sticky;top:0;z-index:40;backdrop-filter:saturate(1.2) blur(6px);background:linear-gradient(180deg, rgb(0, 7, 141), #011576);color:#f2f3f5;border-bottom:1px solid rgba(15,23,42,.12)}
-    .nav{display:flex;align-items:center;gap:18px;justify-content:space-between}
+    .nav{display:flex;align-items:center;gap:14px;justify-content:space-between;min-height:54px}
     .brand{display:flex;align-items:center;gap:12px}
-    .brand img{height:clamp(32px, 6vw, 36px); width:auto;}
+    .brand img{height:clamp(28px, 5vw, 36px); width:auto}
 
     .hero{background:#ffffff;color:var(--text);border-bottom:1px solid #E2E8F0}
     .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
@@ -61,13 +69,18 @@
     @media(max-width:1000px){.grid.armada{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:700px){.grid.armada{grid-template-columns:1fr}}
 
-    .btn{--_bg:var(--green);--_fg:#fff;display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;background:var(--_bg);color:var(--_fg);border:1px solid transparent;font-weight:700;box-shadow:0 2px 0 rgba(0,0,0,.06);transition:.2s}
+    /* Force the order form to stack on mobile even though inline style defines columns */
+    @media(max-width:900px){section#order{grid-template-columns:1fr !important}}
+
+    .btn{--_bg:var(--green);--_fg:#fff;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 16px;border-radius:14px;background:var(--_bg);color:var(--_fg);border:1px solid transparent;font-weight:700;box-shadow:0 2px 0 rgba(0,0,0,.06);transition:.2s;min-height:44px}
     .btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(6,177,250,.35)}
     .btn.secondary{--_bg:#fff;--_fg:var(--green);border-color:var(--green)}
     .btn.orange{--_bg:var(--orange);--_fg:#ffffff;border-color:rgba(0,0,0,.1)}
     .btn.ghost{--_bg:transparent;--_fg:#fff;border-color:#fff}
 
-    .pill{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;padding:8px 12px;border:1px dashed rgba(0,0,0,.15);border-radius:999px;background:#fff}
+    .po-actions{display:grid;grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));gap:8px}
+
+    .pill{display:inline-flex;align-items:center;gap:8px;font-size:.9rem;padding:8px 12px;border:1px dashed rgba(0,0,0,.15);border-radius:999px;background:#fff}
 
     .kicker{font-size:.85rem;color:var(--muted);font-weight:700;letter-spacing:.1em;text-transform:uppercase}
     h1{font-size:clamp(1.8rem, 2.4vw + 1rem, 3rem);line-height:1.1;margin:8px 0 10px}
@@ -84,34 +97,26 @@
     /* Carousel controls */
     .carousel{position:relative}
     .carousel .carousel-frame{width:100%;height:100%}
-    .carousel .nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);color:#fff;border:none;padding:6px 10px;border-radius:10px;cursor:pointer}
+    .carousel .nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);color:#fff;border:none;padding:10px 12px;border-radius:10px;cursor:pointer}
     .carousel .nav.prev{left:8px}
     .carousel .nav.next{right:8px}
     .carousel .dots{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);display:flex;gap:6px}
     .carousel .dot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.55)}
     .carousel .dot.active{background:#fff}
 
-    .floating-wa{position:fixed;right:16px;bottom:16px;z-index:60}
+    .floating-wa{position:fixed;right:max(16px, env(safe-area-inset-right));bottom:max(16px, env(safe-area-inset-bottom));z-index:60}
 
     footer{background:#011576;color:#ffffff;margin-top:36px;border-top:1px solid rgba(255,255,255,.08)}
     footer .cols{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
     @media(max-width:900px){footer .cols{grid-template-columns:1fr}}
 
     .chips{display:flex;flex-wrap:wrap;gap:8px}
-    .chip{font-size:.8rem;background:#F1F5F9;border:1px solid #E2E8F0;padding:6px 10px;border-radius:999px;color:#0F172A;font-weight:700}
+    .chip{font-size:.85rem;background:#F1F5F9;border:1px solid #E2E8F0;padding:6px 10px;border-radius:999px;color:#0F172A;font-weight:700}
     footer .chip{background:transparent;color:#ffffff;border-color:rgba(255,255,255,.35);font-weight:700}
 
-    .section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
-
-    .map-button{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;border:1px solid currentColor;background:transparent;color:inherit;font-weight:700}
-    .map-button:hover{background:rgba(255,255,255,.12)}
-
-    .divider{height:1px;background:linear-gradient(90deg, rgba(0,0,0,0), rgba(2,6,23,.2), rgba(0,0,0,0)); margin: 20px 0;}
-
-    .notice{font-size:.86rem;color:#0f172a;background:#FFFBEB;border:1px solid #FDE68A;padding:10px 12px;border-radius:12px}
-
-    .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    .toolbar input[type="search"], select, input, textarea{padding:10px 12px;border-radius:12px;border:1px solid #e2e8f0}
+    .section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px;flex-wrap:wrap}
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;width:100%}
+    .toolbar input[type="search"]{padding:10px 12px;border-radius:12px;border:1px solid #e2e8f0;flex:1;min-width:200px;max-width:420px}
     .filter-btn{padding:8px 12px;border-radius:999px;border:1px solid #e2e8f0;background:#fff;cursor:pointer}
     .filter-btn.active{background:var(--green);border-color:var(--green);color:#fff}
 
@@ -121,20 +126,17 @@
     .po-card{display:grid;gap:12px;padding:16px}
     .po-head{display:flex;align-items:center;gap:10px}
     .po-head img{width:36px;height:36px;border-radius:9px;border:1px solid #e2e8f0;object-fit:cover}
-    .po-actions{display:flex;gap:8px;flex-wrap:wrap}
-    footer .btn.ghost{--_fg:var(--text);border-color:var(--text)}
+
+    footer .btn.ghost{--_fg:#ffffff;border-color:rgba(255,255,255,.5)}
     .btn.wa{--_bg:#25D366;--_fg:#fff;border-color:#1DA851}
     .btn.wa:hover{box-shadow:0 8px 18px rgba(37,211,102,.35)}
-  
 
     footer .btn{box-shadow:none}
     footer .btn:hover{transform:none;box-shadow:none}
     footer .btn.ghost{--_fg:#ffffff;border-color:rgba(255,255,255,.5)}
     footer .btn.secondary{--_bg:transparent;--_fg:#ffffff;border-color:rgba(255,255,255,.5)}
     footer .muted{color:rgba(255,255,255,.85) !important}
-    
-
-</style>
+  </style>
 </head>
 <body>
   <script>
@@ -145,7 +147,7 @@
   <header>
     <div class="container nav">
       <div class="brand" aria-label="MultiBus">
-        <img src="image/multibus_logo.png" alt="MultiBus" />
+        <img src="image/multibus_logo.png" alt="MultiBus" loading="lazy" decoding="async" />
       </div>
       <div style="display:flex; gap:10px; align-items:center;">
         <a class="map-button" href="#po" title="Daftar PO">🚌 Daftar PO</a>
@@ -171,14 +173,14 @@
         </div>
       </div>
       <div class="card" style="padding:16px;">
-        <div class="fleet-cover"><img src="image/og-cover.jpg" alt="Bus cover" onerror="this.src='image/placeholder.jpg'"/></div>
+        <div class="fleet-cover"><img src="image/og-cover.jpg" alt="Bus cover" onerror="this.src='image/placeholder.jpg'" loading="lazy" decoding="async"/></div>
         <div class="chips" style="margin-top:12px">
           <span class="chip">AC Dingin</span>
           <span class="chip">Audio & USB</span>
           <span class="chip">Bagasi Luas</span>
           <span class="chip">Reclining Seat*</span>
         </div>
-        <p class="muted" style="margin-top:8px;font-size:.85rem">*Fitur tergantung tipe & PO. Konfirmasi ke admin.</p>
+        <p class="muted" style="margin-top:8px;font-size:.9rem">*Fitur tergantung tipe & PO. Konfirmasi ke admin.</p>
       </div>
     </div>
   </section>
@@ -199,7 +201,7 @@
       <div id="po-more"></div>
     </section>
 
-    <div class="divider"></div>
+    <div class="divider" style="height:1px;background:linear-gradient(90deg, rgba(0,0,0,0), rgba(2,6,23,.2), rgba(0,0,0,0)); margin: 20px 0;"></div>
 
     <section class="grid" id="order" style="grid-template-columns:1.2fr .8fr">
       <div class="card" style="padding:18px">
@@ -256,11 +258,11 @@
             <span class="muted">Catatan Tambahan</span>
             <textarea id="catatan" rows="3" placeholder="Penjelasan rute, stop point, dll (opsional)"></textarea>
           </label>
-          <div style="display:flex; gap:10px; flex-wrap:wrap">
+          <div class="po-actions">
             <button class="btn" id="send-wa">Kirim ke WhatsApp Admin</button>
-            <a class="btn secondary" id="cta-wa-manual" target="_blank">Chat Admin</a>
+            <a class="btn secondary" id="cta-wa-manual" target="_blank" rel="noopener">Chat Admin</a>
           </div>
-          <p class="notice">Harga per PO dapat berbeda tergantung rute, tanggal, dan durasi. Tanyakan promo ke Admin MultiBus.</p>
+          <p class="notice" style="font-size:.95rem;color:#0f172a;background:#FFFBEB;border:1px solid #FDE68A;padding:10px 12px;border-radius:12px">Harga per PO dapat berbeda tergantung rute, tanggal, dan durasi. Tanyakan promo ke Admin MultiBus.</p>
         </form>
       </div>
       <aside class="stack" style="gap:14px">
@@ -275,18 +277,19 @@
         <div class="card" style="padding:16px">
           <h3 style="margin:0 0 6px 0">Info Penting</h3>
           <ul class="muted" style="margin:0 0 0 18px; line-height:1.6">
-  <li>DP diperlukan untuk <em>lock</em> tanggal (besaran mengikuti kebijakan PO).</li>
-  <li><strong>Titik jemput:</strong> dalam kota maksimal 2 titik yang searah ke tujuan. Di luar kota/tidak searah dikenakan biaya tambahan.</li>
-  <li><strong>Durasi pemakaian:</strong> 12/24 jam per hari sesuai paket. Overtime dikenakan biaya per jam sesuai kebijakan PO.</li>
-  <li>Biaya tol, parkir, BBM, dan uang makan/akomodasi driver menyesuaikan rute dan PO.</li>
-  <li>Pembatalan dan reschedule mengikuti kebijakan masing‑masing PO.</li>
-  <li>Pastikan jumlah penumpang & barang sesuai kapasitas. Mohon informasikan barang berukuran besar sebelumnya.</li>
-  <li>Rute ke area tertentu (mis. wisata pegunungan/akses sempit) mungkin memerlukan izin atau biaya tambahan.</li>
-  <li>Detail final (harga, fasilitas, itinerary) dikonfirmasi saat chat dengan Admin/PO.</li>
-</ul>
+            <li>DP diperlukan untuk <em>lock</em> tanggal (besaran mengikuti kebijakan PO).</li>
+            <li><strong>Titik jemput:</strong> dalam kota maksimal 2 titik yang searah ke tujuan. Di luar kota/tidak searah dikenakan biaya tambahan.</li>
+            <li><strong>Durasi pemakaian:</strong> 12/24 jam per hari sesuai paket. Overtime dikenakan biaya per jam sesuai kebijakan PO.</li>
+            <li>Biaya tol, parkir, BBM, dan uang makan/akomodasi driver menyesuaikan rute dan PO.</li>
+            <li>Pembatalan dan reschedule mengikuti kebijakan masing‑masing PO.</li>
+            <li>Pastikan jumlah penumpang & barang sesuai kapasitas. Mohon informasikan barang berukuran besar sebelumnya.</li>
+            <li>Rute ke area tertentu (mis. wisata pegunungan/akses sempit) mungkin memerlukan izin atau biaya tambahan.</li>
+            <li>Detail final (harga, fasilitas, itinerary) dikonfirmasi saat chat dengan Admin/PO.</li>
+          </ul>
         </div>
       </aside>
     </section>
+
     <section id="seo-lokasi" class="container" style="padding:4px 24px 24px 24px">
       <div class="card" style="padding:16px">
         <h2 style="margin:0 0 8px 0">Layanan Sewa Bus di Sulawesi Selatan</h2>
@@ -319,7 +322,7 @@
       <div class="cols">
         <div>
           <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px">
-            <img src="image/footer.png" alt="Logo MultiBus" style="height:38px" />
+            <img src="image/footer.png" alt="Logo MultiBus" style="height:38px" loading="lazy" decoding="async" />
             <div>
               <strong>MultiBus</strong>
               <div class="muted" style="color:#0F172A">Aggregator Multi‑PO: Minibus, Medium & Big Bus</div>
@@ -354,10 +357,9 @@
   </div>
 
   <script>
-    // Bungkus seluruh app di IIFE untuk mencegah "Illegal return" & kebocoran global
     (()=>{
       // ====== DATA PO (Edit di sini) ======
-            const PO_LIST = [
+      const PO_LIST = [
         {
           name: 'PO Cahaya Bone',
           logo: 'assets/cahaya-bone/logo.png',
@@ -427,39 +429,39 @@
 
           const rawImgs = (Array.isArray(po.images) && po.images.length) ? po.images : ['placeholder.jpg'];
           const imagesArr = rawImgs.map(resolveImg);
-          const firstImg = imagesArr[0] ? `<img src="${imagesArr[0]}" alt="${po.name}" onerror="this.onerror=null; this.src=\'image/placeholder.jpg\'"/>` : '🚌';
-          const dotsHtml = imagesArr.map((_,i)=> `<span class=\"dot ${i===0?'active':''}\" data-i=\"${i}\" aria-label=\"Slide ${i+1}\"></span>`).join('\n');
+          const firstImg = imagesArr[0] ? `<img src="${imagesArr[0]}" alt="${po.name}" loading="lazy" decoding="async" sizes="(max-width:700px) 100vw, (max-width:1000px) 50vw, 33vw" onerror="this.onerror=null; this.src='image/placeholder.jpg'"/>` : '🚌';
+          const dotsHtml = imagesArr.map((_,i)=> `<span class="dot ${i===0?'active':''}" data-i="${i}" aria-label="Slide ${i+1}"></span>`).join('\n');
           const carouselHtml = `
-            <div class=\"fleet-cover carousel\" data-idx=\"${idx}\">
-              <div class=\"carousel-frame\">${firstImg}</div>
-              ${imagesArr.length>1 ? `<button class=\"nav prev\" aria-label=\"Sebelumnya\">‹</button><button class=\"nav next\" aria-label=\"Berikutnya\">›</button><div class=\"dots\">${dotsHtml}</div>` : ``}
+            <div class="fleet-cover carousel" data-idx="${idx}">
+              <div class="carousel-frame">${firstImg}</div>
+              ${imagesArr.length>1 ? `<button class="nav prev" aria-label="Sebelumnya">‹</button><button class="nav next" aria-label="Berikutnya">›</button><div class="dots">${dotsHtml}</div>` : ``}
             </div>`;
           const priceChip = (label,key)=> (po.armada[key] && Number.isFinite(+po.armada[key].from))
-            ? `<span class=\"chip\"><strong>${label}</strong> mulai <span class=\"price\">${idr(po.armada[key].from)}</span> <small>/hari</small></span>`
+            ? `<span class="chip"><strong>${label}</strong> mulai <span class="price">${idr(po.armada[key].from)}</span> <small>/hari</small></span>`
             : '';
 
           const card = document.createElement('article');
           card.className = 'card po-card';
           card.setAttribute('data-has', Object.keys(has).filter(k=>has[k]).join(','));
           card.innerHTML = `
-            <div class=\"po-head\">
-              <img src=\"${po.logo}\" alt=\"${po.name}\" onerror=\"this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2236%22 height=%2236%22%3E%3Crect width=%22100%25%22 height=%22100%25%22 rx=%229%22 fill=%22%23ffffff%22/%3E%3Ctext x=%2250%25%22 y=%2255%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2210%22 font-family=%22Arial%22 fill=%22%23910606%22%3EPO%3C/text%3E%3C/svg%3E'\"/>
+            <div class="po-head">
+              <img src="${po.logo}" alt="${po.name}" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2236%22 height=%2236%22%3E%3Crect width=%22100%25%22 height=%22100%25%22 rx=%229%22 fill=%22%23ffffff%22/%3E%3Ctext x=%2250%25%22 y=%2255%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2210%22 font-family=%22Arial%22 fill=%22%23910606%22%3EPO%3C/text%3E%3C/svg%3E'"/>
               <div>
                 <strong>${po.name}</strong>
               </div>
             </div>
             ${carouselHtml}
-            <div class=\"chips\">
+            <div class="chips">
               ${priceChip('Minibus','hiace')}
               ${priceChip('Medium','medium')}
               ${priceChip('Big Bus','big')}
             </div>
-            <div class=\"po-actions\">
-              ${has.hiace? `<a class=\"btn\" data-order data-type=\"hiace\" data-idx=\"${idx}\">Pesan Minibus</a>`:''}
-              ${has.medium? `<a class=\"btn\" data-order data-type=\"medium\" data-idx=\"${idx}\">Pesan Medium</a>`:''}
-              ${has.big? `<a class=\"btn\" data-order data-type=\"big\" data-idx=\"${idx}\">Pesan Big Bus</a>`:''}
+            <div class="po-actions">
+              ${has.hiace? `<a class="btn" data-order data-type="hiace" data-idx="${idx}">Pesan Minibus</a>`:''}
+              ${has.medium? `<a class="btn" data-order data-type="medium" data-idx="${idx}">Pesan Medium</a>`:''}
+              ${has.big? `<a class="btn" data-order data-type="big" data-idx="${idx}">Pesan Big Bus</a>`:''}
             </div>
-            <p class=\"muted\" style=\"font-size:.8rem\">Harga estimasi — final saat chat dengan PO.</p>
+            <p class="muted" style="font-size:.8rem">Harga estimasi — final saat chat dengan PO.</p>
           `;
           poGrid.appendChild(card);
 
@@ -483,7 +485,9 @@
         const moreWrap = document.getElementById('po-more');
         if (baseMode && list.length > MAX_INITIAL) {
           const remaining = Math.max(0, list.length - MAX_INITIAL);
-          moreWrap.innerHTML = `<div class=\"more-wrap\" style=\"display:flex;justify-content:center;margin-top:8px\">\n            <button id=\"btn-more\" class=\"filter-btn\" aria-expanded=\"${!tooMany}\">${tooMany ? `Lihat semua PO (${remaining} lagi)` : 'Tampilkan lebih sedikit'}</button>\n          </div>`;
+          moreWrap.innerHTML = `<div class="more-wrap" style="display:flex;justify-content:center;margin-top:8px">
+            <button id="btn-more" class="filter-btn" aria-expanded="${!tooMany}">${tooMany ? `Lihat semua PO (${remaining} lagi)` : 'Tampilkan lebih sedikit'}</button>
+          </div>`;
           document.getElementById('btn-more').onclick = ()=>{ showAll = !showAll; renderPOList(filterType, q); };
         } else {
           moreWrap.innerHTML = '';
@@ -555,7 +559,6 @@
         const opt=document.createElement('option');
         opt.value=i; opt.textContent=po.name; poSelect.appendChild(opt);
       });
-      // Sinkronkan opsi armada awal berdasarkan PO terpilih
       syncArmadaOptions();
 
       document.getElementById('send-wa').addEventListener('click', ()=>{
@@ -592,7 +595,6 @@
         if(manualBtn) manualBtn.href = waLink(MULTIBUS.wa, 'Halo Admin MultiBus, saya ingin bertanya ketersediaan armada.');
         syncArmadaOptions();
       });
-      // Init manual
       syncArmadaOptions();
       manualBtn.href = waLink(MULTIBUS.wa, 'Halo Admin MultiBus, saya ingin bertanya ketersediaan armada.');
 
@@ -607,17 +609,12 @@
       // ====== Minimal Tests (runtime assertions) ======
       (function(){
         try {
-          // Test newline join works and doesn't throw
           console.assert('a\nb' === ['a','b'].join('\n'), 'Join with "\\n" should create newline');
-          // Test PO list exists
           console.assert(Array.isArray(PO_LIST) && PO_LIST.length >= 1, 'PO_LIST harus array berisi item');
-          // Test WA link format
           const wa = waLink('6285','halo');
           console.assert(wa.startsWith('https://wa.me/'), 'waLink harus pakai wa.me');
-          // Test resolveImg helper
           console.assert(resolveImg('bus.jpg').startsWith('image/'), 'resolveImg harus menambahkan prefix image/');
           console.assert(resolveImg('/cdn/bus.jpg') === '/cdn/bus.jpg', 'resolveImg tidak mengubah path absolut');
-          // Test: armada options reflect availability — Sumber Abadi: Medium only, Sulawesi Trans: Minibus + Medium
           const idxSA = PO_LIST.findIndex(p=>/Sumber Abadi/i.test(p.name));
           const idxST = PO_LIST.findIndex(p=>/Sulawesi Trans/i.test(p.name));
           if(idxSA >= 0){ const prev = poSelect.value; poSelect.value = String(idxSA); syncArmadaOptions();
@@ -634,28 +631,23 @@
             const oBig = opts.find(o=>o.value.startsWith('Big'));
             console.assert(!oMin.disabled && !oMed.disabled && oBig.disabled, 'PO Sulawesi Trans harus Minibus dan Medium (tanpa Big)');
             poSelect.value = prev; syncArmadaOptions(); }
-          // Test: when >3 PO and baseMode, default should limit to MAX_INITIAL
           if(PO_LIST.length > 3){
             const saved = showAll; const prevQ = searchInput.value; const activeType = document.querySelector('.filter-btn.active')?.dataset.type || 'all';
             showAll = false; searchInput.value=''; renderPOList('all','');
             const cards = document.querySelectorAll('#po-grid .po-card').length;
             console.assert(cards <= MAX_INITIAL, 'Default render harus batasi ke MAX_INITIAL saat >3 PO');
-            // restore
             showAll = saved; renderPOList(activeType, prevQ);
           }
-          // Test: carousel dots count equals images length (for first card if available)
           const firstCard = document.querySelector('#po-grid .po-card');
           if(firstCard){
             const dots = firstCard.querySelectorAll('.dots .dot').length;
             const imgsLen = (PO_LIST[0] && Array.isArray(PO_LIST[0].images)) ? PO_LIST[0].images.length : 0;
             if(imgsLen > 1) console.assert(dots === imgsLen, 'Jumlah dot harus sama dengan jumlah gambar');
           }
-          // Test: WA text includes PO name
           if(PO_LIST[0]){
             const sample = ['Halo Admin MultiBus,',`Saya ingin sewa Minibus 8–14 (PO: ${PO_LIST[0].name}).`].join('\n');
             console.assert(sample.includes(PO_LIST[0].name), 'WA text harus memuat nama PO');
           }
-          // Test: JSON-LD schema is valid JSON (no comments / stray tokens)
           const ld = document.querySelector('script[type="application/ld+json"]');
           console.assert(!!ld, 'JSON-LD <script> harus ada');
           if(ld){ JSON.parse(ld.textContent); }
