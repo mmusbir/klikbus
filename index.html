@@ -10,19 +10,19 @@
   <meta property="og:title" content="MultiBus — Sewa Bus Sulawesi Selatan (Multi‑PO)" />
   <meta property="og:description" content="Sewa bus & minibus Multi‑PO khusus wilayah Sulawesi Selatan — Makassar, Parepare, Pinrang, Sidrap, Barru, Toraja, Malino, Bira, Gowa, Maros, Bone, Wajo, Palopo, Soppeng, Pangkep, Luwu. Order cepat via WhatsApp Admin MultiBus." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="image/og-cover.jpg" />
-  <link rel="canonical" href="https://multibus.id/" />
-  <link rel="alternate" hreflang="id-ID" href="https://multibus.id/" />
+  <meta property="og:image" content="image/og-cover.webp" />
+  <link rel="canonical" href="https://www.multibus.id/" />
+  <link rel="alternate" hreflang="id-ID" href="https://www.multibus.id/" />
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
   <meta name="googlebot" content="index,follow" />
   <meta property="og:site_name" content="MultiBus" />
   <meta property="og:locale" content="id_ID" />
-  <meta property="og:url" content="https://multibus.id/" />
+  <meta property="og:url" content="https://www.multibus.id/" />
   <meta property="og:image:alt" content="MultiBus — Sewa Bus & Minibus" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="MultiBus — Sewa Bus Sulawesi Selatan (Multi‑PO)" />
   <meta name="twitter:description" content="Sewa bus & minibus Multi‑PO di Sulawesi Selatan: Makassar, Parepare, Pinrang, Sidrap, Barru, Toraja, Malino, Bira, Gowa, Maros, Bone, Wajo, Palopo, Soppeng, Pangkep, Luwu. Klik untuk pesan via WhatsApp." />
-  <meta name="twitter:image" content="image/og-cover.jpg" />
+  <meta name="twitter:image" content="image/og-cover.webp" />
   <meta name="keywords" content="sewa bus sulawesi selatan, sewa bus sulsel, sewa bus makassar, sewa bus parepare, sewa bus pinrang, sewa bus sidrap, sewa bus barru, sewa bus toraja, sewa bus malino, sewa bus bira, sewa bus gowa, sewa bus maros, sewa bus bone, sewa bus wajo, sewa bus palopo, sewa bus soppeng, sewa bus pangkep, sewa bus luwu, sewa minibus sulsel, carter bus sulsel, medium bus sulsel, big bus sulsel, multibus" />
   <link rel="apple-touch-icon" href="image/favicon/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="image/favicon/favicon-32x32.png" />
@@ -159,6 +159,16 @@
 /* No-Nav variant: align actions to right and hide nav buttons if exist */
 .actions{justify-content:flex-end}
 #prev-step, #next-step{display:none !important}
+
+/* ===== Readability tweaks for order form ===== */
+.form-modern .grid { gap:14px }
+@media(max-width:700px){ .form-modern .grid { grid-template-columns:1fr !important } }
+.form-modern .control{ padding:12px 14px }
+.form-modern input, .form-modern select, .form-modern textarea{ font-size:1rem }
+.form-modern .floating>label{ color:#334155 } /* darker label for better contrast */
+.form-modern .floating:focus-within>label,
+.form-modern .floating.has-value>label{ color:var(--green); font-weight:700 }
+
 </style>
 </head>
 <body>
@@ -196,7 +206,7 @@
         </div>
       </div>
       <div class="card" style="padding:16px;">
-        <div class="fleet-cover"><img src="image/og-cover.jpg" alt="Bus cover" onerror="this.src='image/placeholder.jpg'" loading="lazy" decoding="async"/></div>
+        <div class="fleet-cover"><img src="image/og-cover.webp" alt="Bus cover" onerror="this.src='image/placeholder.jpg'" loading="lazy" decoding="async"/></div>
         <div class="chips" style="margin-top:12px">
           <span class="chip">AC Dingin</span>
           <span class="chip">Audio & USB</span>
@@ -315,19 +325,14 @@
       </div>
 
       <div class="preview" id="wa-preview" aria-live="polite"></div>
-      <div style="display:flex; gap:8px; flex-wrap:wrap">
-        <button class="btn secondary" type="button" id="copy-wa">Salin Pesan</button>
-        <a class="btn secondary" id="cta-wa-manual" target="_blank" rel="noopener">Chat Admin</a>
-      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap"><button class="btn secondary" type="button" id="copy-wa">Salin Pesan</button><button class="btn" id="send-wa" type="button">Kirim ke WhatsApp Admin</button></div>
       <p class="notice" style="font-size:.95rem;color:#0f172a;background:#FFFBEB;border:1px solid #FDE68A;padding:10px 12px;border-radius:12px">
         Harga per PO dapat berbeda tergantung rute, tanggal, dan durasi. Tanyakan promo ke Admin MultiBus.
       </p>
     </div>
 
     <!-- Actions -->
-    <div class="actions">
-      <button class="btn" id="send-wa" type="button" hidden>Kirim ke WhatsApp Admin</button>
-    </div>
+    
   </form>
 </div>
       <aside class="stack" style="gap:14px">
@@ -661,7 +666,7 @@
         syncArmadaOptions();
       });
       syncArmadaOptions();
-      manualBtn.href = waLink(MULTIBUS.wa, 'Halo Admin MultiBus, saya ingin bertanya ketersediaan armada.');
+      if(manualBtn) manualBtn.href = waLink(MULTIBUS.wa, 'Halo Admin MultiBus, saya ingin bertanya ketersediaan armada.');
 
       // Floating WA -> arahkan user pilih PO
       document.getElementById('floating-wa').addEventListener('click', ()=>{
@@ -897,8 +902,8 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "MultiBus — Sulawesi Selatan",
-    "url": "https://multibus.id/",
-    "logo": "https://multibus.id/image/Logoklikbus.png",
+    "url": "https://www.multibus.id/",
+    "logo": "https://www.multibus.id/image/Logoklikbus.png",
     "sameAs": [
       "https://wa.me/6285256473344"
     ],
@@ -922,10 +927,10 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "MultiBus",
-    "url": "https://multibus.id/",
+    "url": "https://www.multibus.id/",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://multibus.id/?q={search_term_string}",
+      "target": "https://www.multibus.id/?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   },
@@ -975,13 +980,13 @@
         "@type": "ListItem",
         "position": 1,
         "name": "Beranda",
-        "item": "https://multibus.id/"
+        "item": "https://www.multibus.id/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Sewa Bus",
-        "item": "https://multibus.id/"
+        "item": "https://www.multibus.id/"
       }
     ]
   },
@@ -992,7 +997,7 @@
     "provider": {
       "@type": "Organization",
       "name": "MultiBus",
-      "url": "https://multibus.id/"
+      "url": "https://www.multibus.id/"
     },
     "areaServed": [
       "Makassar",
@@ -1019,7 +1024,7 @@
     ],
     "availableChannel": {
       "@type": "ServiceChannel",
-      "serviceUrl": "https://multibus.id/",
+      "serviceUrl": "https://www.multibus.id/",
       "availableLanguage": [
         "id"
       ]
