@@ -169,6 +169,14 @@
 .form-modern .floating:focus-within>label,
 .form-modern .floating.has-value>label{ color:var(--green); font-weight:700 }
 
+
+/* ===== Facility chips ===== */
+.facility-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.facility{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #E2E8F0;border-radius:999px;padding:6px 10px;font-size:.9rem;line-height:1}
+.facility svg{width:16px;height:16px}
+.facility[title]{position:relative}
+.facility[title]:hover{box-shadow:0 6px 14px rgba(0,0,0,.06)}
+
 </style>
 </head>
 <body>
@@ -434,25 +442,46 @@
           name: 'PO Cahaya Bone',
           logo: 'assets/cahaya-bone/logo.png',
           images: ['assets/cahaya-bone/1.jpg','assets/cahaya-bone/2.jpg','assets/cahaya-bone/3.jpg'],
-          armada: { hiace: {}, medium: {}, big: {} }
-        },
+          armada: { hiace: {}, medium: {}, big: {} },
+          fasilitas: ['AC Dingin','Audio','USB Charger','Bagasi','Reclining Seat'],
+          price_from: 1300000
+        },,
         {
           name: 'PO Sumber Abadi',
           logo: 'assets/sumber-abadi/logo.png',
           images: ['assets/sumber-abadi/1.jpg'],
-          armada: { medium: {} }
+          armada: { medium: {} },
+          fasilitas: ['AC Dingin','Audio','Bagasi','Mic','LCD TV', 'Reclining Seat'],
+          price_from: 2000000
         },
         {
           name: 'PO Sulawesi Trans',
           logo: 'assets/sulawesi-trans/logo.png',
           images: ['assets/sulawesi-trans/1.jpg','assets/sulawesi-trans/2.jpg'],
-          armada: { hiace: {}, medium: {} }
+          armada: { hiace: {}, medium: {} },
+          fasilitas: ['AC Dingin','Audio','USB Charger','Bagasi','Reclining Seat'],
+          price_from: 1500000
         }
       ];
 
       // ====== UTIL ======
       const idr = (n)=> new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(Number(n||0));
       const waLink = (number, text='') => `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
+
+      // Map facility keyword -> emoji/icon
+      function facilityIcon(name=''){
+        const n = (name||'').toLowerCase();
+        if(n.includes('ac')) return '❄️';
+        if(n.includes('usb')) return '🔌';
+        if(n.includes('audio')) return '🔊';
+        if(n.includes('mic')) return '🎤';
+        if(n.includes('tv') || n.includes('lcd')) return '📺';
+        if(n.includes('led')) return '💡';
+        if(n.includes('bagasi')) return '🧳';
+        if(n.includes('reclining')) return '🪑';
+        if(n.includes('wifi')) return '📶';
+        return '🚌';
+      }
 
       // Base folder untuk foto armada
       const IMG_BASE = 'image/';
@@ -521,17 +550,11 @@
               </div>
             </div>
             ${carouselHtml}
-            <div class="chips">
-              ${priceChip('Minibus','hiace')}
-              ${priceChip('Medium','medium')}
-              ${priceChip('Big Bus','big')}
-            </div>
-            <div class="po-actions">
-              ${has.hiace? `<a class="btn" data-order data-type="hiace" data-idx="${idx}">Pesan Minibus</a>`:''}
-              ${has.medium? `<a class="btn" data-order data-type="medium" data-idx="${idx}">Pesan Medium</a>`:''}
-              ${has.big? `<a class="btn" data-order data-type="big" data-idx="${idx}">Pesan Big Bus</a>`:''}
-            </div>
-            <p class="muted" style="font-size:.8rem">Harga estimasi — final saat chat dengan PO.</p>
+            <div class="chips">${po.price_from ? `<span class="chip"><strong>Mulai</strong> <span class="price">${idr(po.price_from)}</span> <small>/hari</small></span>` : ''}${priceChip('Minibus','hiace')}${priceChip('Medium','medium')}${priceChip('Big Bus','big')}</div>
+            
+            <div class="po-info" style="font-size:.9rem; line-height:1.4"><strong>Armada tersedia:</strong> ${[has.hiace? 'Minibus (8–14 seat)': null, has.medium? 'Medium Bus (30 seat)': null, has.big? 'Big Bus (40 seat)': null].filter(Boolean).join(', ') || 'Hubungi admin untuk detail'}<br/><strong>Fasilitas:</strong><div class="facility-list">${(Array.isArray(po.fasilitas) && po.fasilitas.length) ? po.fasilitas.map(f => `<span class="facility" title="${f}">${facilityIcon(f)} <span>${f}</span></span>`).join('') : 'Tergantung PO'}</div></div>
+            <p class="muted"
+" style="font-size:.8rem">Harga estimasi — final saat chat dengan PO.</p>
           `;
           poGrid.appendChild(card);
 
