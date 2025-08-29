@@ -1,1059 +1,261 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MultiBus — Sewa Bus Sulawesi Selatan (Multi‑PO)</title>
-  <meta name="description" content="MultiBus: sewa bus & minibus (8–14/30/40 seat) di Sulawesi Selatan — Makassar, Parepare, Pinrang, Sidrap, Barru, Toraja, Malino, Bira, Gowa, Maros, Bone, Wajo, Palopo, Soppeng, Pangkep, Luwu. Order via WhatsApp." />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>multibus — Pemesanan Tiket Bus di Sulawesi</title>
+  <meta name="description" content="multibus: Platform pemesanan tiket bus multi-PO di Sulawesi. Pilih rute & tanggal, lihat PO, kirim ke WhatsApp 085255877227." />
   <meta name="theme-color" content="#011576" />
-  <link rel="icon" href="image/favicon/favicon.ico" />
-  <meta property="og:title" content="MultiBus — Sewa Bus Sulawesi Selatan (Multi‑PO)" />
-  <meta property="og:description" content="Sewa bus & minibus Multi‑PO khusus wilayah Sulawesi Selatan — Makassar, Parepare, Pinrang, Sidrap, Barru, Toraja, Malino, Bira, Gowa, Maros, Bone, Wajo, Palopo, Soppeng, Pangkep, Luwu. Order cepat via WhatsApp Admin MultiBus." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="image/og-cover.webp" />
-  <link rel="canonical" href="https://www.multibus.id/" />
-  <link rel="alternate" hreflang="id-ID" href="https://www.multibus.id/" />
-  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
-  <meta name="googlebot" content="index,follow" />
-  <meta property="og:site_name" content="MultiBus" />
-  <meta property="og:locale" content="id_ID" />
-  <meta property="og:url" content="https://www.multibus.id/" />
-  <meta property="og:image:alt" content="MultiBus — Sewa Bus & Minibus" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="MultiBus — Sewa Bus Sulawesi Selatan (Multi‑PO)" />
-  <meta name="twitter:description" content="Sewa bus & minibus Multi‑PO di Sulawesi Selatan: Makassar, Parepare, Pinrang, Sidrap, Barru, Toraja, Malino, Bira, Gowa, Maros, Bone, Wajo, Palopo, Soppeng, Pangkep, Luwu. Klik untuk pesan via WhatsApp." />
-  <meta name="twitter:image" content="image/og-cover.webp" />
-  <meta name="keywords" content="sewa bus sulawesi selatan, sewa bus sulsel, sewa bus makassar, sewa bus parepare, sewa bus pinrang, sewa bus sidrap, sewa bus barru, sewa bus toraja, sewa bus malino, sewa bus bira, sewa bus gowa, sewa bus maros, sewa bus bone, sewa bus wajo, sewa bus palopo, sewa bus soppeng, sewa bus pangkep, sewa bus luwu, sewa minibus sulsel, carter bus sulsel, medium bus sulsel, big bus sulsel, multibus" />
-  <link rel="apple-touch-icon" href="image/favicon/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="image/favicon/favicon-32x32.png" />
-
+  <link rel="icon" type="image/x-icon" href="image/favicon/favicon.ico" />
   <style>
-    :root{
-      --orange:#011576;
-      --green:#06B1FA;
-      --text:#0f172a;
-      --muted:#283445;
-      --bg:#f1f2ffdd;
-      --card:#ffffff;
-      --ring: rgba(0,0,0,.12);
-      --radius: 18px;
-    }
-
+    :root{ --brand:#011576; --ink:#0b1026; --bg:#f6f7fb; --muted:#6b7280; --card:#ffffff; --radius:18px; }
     *{box-sizing:border-box}
-    html,body{
-      margin:0;padding:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);background:var(--bg);
-      -webkit-text-size-adjust:100%;
-      text-rendering:optimizeLegibility;
-    }
-    img{max-width:100%;display:block;height:auto}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,'Helvetica Neue',Arial,sans-serif;color:var(--ink);background:var(--bg);-webkit-tap-highlight-color:transparent}
     a{color:inherit;text-decoration:none}
-    :focus-visible{outline:3px solid var(--green); outline-offset:3px; border-radius:10px}
+    :focus-visible{outline:3px solid #00C2FF;outline-offset:2px}
 
-    /* Layout */
-    .container{max-width:1180px;margin-inline:auto;padding:clamp(16px, 3vw, 24px)}
-    header{position:sticky;top:0;z-index:40;backdrop-filter:saturate(1.2) blur(6px);background:linear-gradient(180deg, rgb(0, 7, 141), #011576);color:#f2f3f5;border-bottom:1px solid rgba(15,23,42,.12)}
-    .nav{display:flex;align-items:center;gap:14px;justify-content:space-between;min-height:54px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{height:clamp(28px, 5vw, 36px); width:auto}
+    .container{max-width:1100px;margin-inline:auto;padding:20px}
+    header{position:sticky;top:0;z-index:20;background:rgba(1,21,118,0.9);backdrop-filter:saturate(140%) blur(6px);box-shadow:0 2px 14px rgba(1,21,118,0.25)}
+    header .row{display:flex;align-items:center;gap:16px;padding:10px 20px}
+    .logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;letter-spacing:.3px}
+    .logo .dot{width:10px;height:10px;background:#02A4E4;border-radius:100%}
+    .cta{margin-left:auto;display:flex;gap:10px;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:10px;border:none;background:var(--brand);color:#fff;border-radius:12px;padding:14px 16px;font-weight:700;min-height:48px}
 
-    .hero{background:#ffffff;color:var(--text);border-bottom:1px solid #E2E8F0}
-    .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
-    @media(max-width:900px){.hero-inner{grid-template-columns:1fr}}
+    .hero{position:relative;isolation:isolate;background:radial-gradient(1200px 480px at 70% -10%, rgba(2,164,228,.25), transparent 60%), linear-gradient(180deg, rgba(1,21,118,1) 0%, rgba(1,21,118,.9) 60%, rgba(1,21,118,.85) 100%);color:#fff}
+    .hero .container{padding-top:48px;padding-bottom:56px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .hero h1{font-size:clamp(26px,3vw,40px);line-height:1.15;margin:0 0 10px;font-weight:800}
+    .hero p{margin:0 0 20px;color:#e6ebff;max-width:720px;font-size:14px;line-height:1.7}
 
-    .card{background:var(--card);border-radius:var(--radius);box-shadow:0 8px 24px rgba(0,0,0,.08);border:1px solid #f1f5f9}
-    .stack{display:grid;gap:16px}
-    .grid{display:grid;gap:18px}
-    .grid.armada{grid-template-columns:repeat(3,1fr)}
-    @media(max-width:1000px){.grid.armada{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:700px){.grid.armada{grid-template-columns:1fr}}
+    .search{background:#fff;color:var(--ink);border-radius:var(--radius);box-shadow:0 20px 40px rgba(0,0,0,.15);padding:20px}
+    .search form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:12px}
+    .field{display:flex;flex-direction:column;gap:6px}
+    label{font-size:12px;color:var(--muted)}
+    select,input[type=date]{width:100%;padding:14px 12px;border-radius:12px;border:1.5px solid #e5e7eb;font-size:15px;min-height:48px}
+    .swap{align-self:end}
+    .swap button{width:100%;padding:14px;border-radius:12px;border:1.5px dashed #cbd5e1;background:#f8fafc;font-weight:600;min-height:48px}
+    .primary{background:var(--brand);color:#fff;border:none;border-radius:12px;padding:14px 16px;font-weight:700;min-height:48px}
 
-    /* Force the order form to stack on mobile even though inline style defines columns */
-    @media(max-width:900px){section#order{grid-template-columns:1fr !important}}
+    .hero-visual img{width:100%;height:auto;border-radius:20px;box-shadow:0 8px 20px rgba(0,0,0,.25)}
 
-    .btn{--_bg:var(--green);--_fg:#fff;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 16px;border-radius:14px;background:var(--_bg);color:var(--_fg);border:1px solid transparent;font-weight:700;box-shadow:0 2px 0 rgba(0,0,0,.06);transition:.2s;min-height:44px}
-    .btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(6,177,250,.35)}
-    .btn.secondary{--_bg:#fff;--_fg:var(--green);border-color:var(--green)}
-    .btn.orange{--_bg:var(--orange);--_fg:#ffffff;border-color:rgba(0,0,0,.1)}
-    .btn.ghost{--_bg:transparent;--_fg:#fff;border-color:#fff}
+    .section{padding:30px 0}
+    .results{display:grid;grid-template-columns:1fr;gap:12px}
+    .card{background:var(--card);border-radius:16px;padding:16px;border:1px solid #eaecf0;display:grid;grid-template-columns:auto 1.2fr .8fr auto;gap:14px;align-items:center}
+    .card .title{font-weight:800}
+    .chip{display:inline-flex;align-items:center;gap:6px;padding:10px 12px;border-radius:999px;background:#f1f5f9;color:#0f172a;font-size:14px;min-height:40px;border:0;cursor:pointer}
+    .money{font-weight:900;font-size:22px;color:var(--brand)}
+    .thumb{width:110px;height:68px;object-fit:cover;border-radius:12px;border:1px solid #e5e7eb;background:#f8fafc}
 
-    .po-actions{display:grid;grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));gap:8px}
+    footer{background:#0b1026;color:#cbd5e1}
+    footer .container{padding:26px 20px}
 
-    .pill{display:inline-flex;align-items:center;gap:8px;font-size:.9rem;padding:8px 12px;border:1px dashed rgba(0,0,0,.15);border-radius:999px;background:#fff}
-
-    .kicker{font-size:.85rem;color:var(--muted);font-weight:700;letter-spacing:.1em;text-transform:uppercase}
-    h1{font-size:clamp(1.8rem, 2.4vw + 1rem, 3rem);line-height:1.1;margin:8px 0 10px}
-    h2{font-size:clamp(1.4rem, 1vw + 1rem, 2rem);margin:0 0 6px}
-    p{margin:0;color:var(--text)}
-    .muted{color:var(--muted)}
-
-    .feature{display:flex;gap:12px;align-items:flex-start}
-    .feature .icon{width:34px;height:34px;border-radius:10px;background:#fff;display:grid;place-items:center;border:1px solid #e2e8f0}
-
-    .fleet-cover{aspect-ratio: 16/9; border-radius: 14px; background:#f8fafc;display:grid;place-items:center;border:1px solid #e2e8f0;overflow:hidden}
-    .fleet-cover img{width:100%;height:100%;object-fit:cover}
-
-    /* Carousel controls */
-    .carousel{position:relative}
-    .carousel .carousel-frame{width:100%;height:100%}
-    .carousel .nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);color:#fff;border:none;padding:10px 12px;border-radius:10px;cursor:pointer}
-    .carousel .nav.prev{left:8px}
-    .carousel .nav.next{right:8px}
-    .carousel .dots{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);display:flex;gap:6px}
-    .carousel .dot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.55)}
-    .carousel .dot.active{background:#fff}
-
-    .floating-wa{position:fixed;right:max(16px, env(safe-area-inset-right));bottom:max(16px, env(safe-area-inset-bottom));z-index:60}
-
-    footer{background:#011576;color:#ffffff;margin-top:36px;border-top:1px solid rgba(255,255,255,.08)}
-    footer .cols{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
-    @media(max-width:900px){footer .cols{grid-template-columns:1fr}}
-
-    .chips{display:flex;flex-wrap:wrap;gap:8px}
-    .chip{font-size:.85rem;background:#F1F5F9;border:1px solid #E2E8F0;padding:6px 10px;border-radius:999px;color:#0F172A;font-weight:700}
-    footer .chip{background:transparent;color:#ffffff;border-color:rgba(255,255,255,.35);font-weight:700}
-
-    .section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px;flex-wrap:wrap}
-    .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;width:100%}
-    .toolbar input[type="search"]{padding:10px 12px;border-radius:12px;border:1px solid #e2e8f0;flex:1;min-width:200px;max-width:420px}
-    .filter-btn{padding:8px 12px;border-radius:999px;border:1px solid #e2e8f0;background:#fff;cursor:pointer}
-    .filter-btn.active{background:var(--green);border-color:var(--green);color:#fff}
-
-    .price{font-weight:800}
-    .price small{font-weight:600;color:var(--muted)}
-
-    .po-card{display:grid;gap:12px;padding:16px}
-    .po-head{display:flex;align-items:center;gap:10px}
-    .po-head img{width:36px;height:36px;border-radius:9px;border:1px solid #e2e8f0;object-fit:cover}
-
-    footer .btn.ghost{--_fg:#ffffff;border-color:rgba(255,255,255,.5)}
-    .btn.wa{--_bg:#25D366;--_fg:#fff;border-color:#1DA851}
-    .btn.wa:hover{box-shadow:0 8px 18px rgba(37,211,102,.35)}
-
-    footer .btn{box-shadow:none}
-    footer .btn:hover{transform:none;box-shadow:none}
-    footer .btn.ghost{--_fg:#ffffff;border-color:rgba(255,255,255,.5)}
-    footer .btn.secondary{--_bg:transparent;--_fg:#ffffff;border-color:rgba(255,255,255,.5)}
-    footer .muted{color:rgba(255,255,255,.85) !important}
-
-/* Modern form UI */
-.form-modern .field{position:relative;display:grid;gap:6px}
-.form-modern .control{display:flex;align-items:center;gap:10px;border:1px solid #e2e8f0;background:#fff;border-radius:12px;padding:10px 12px;box-shadow:0 1px 0 var(--ring)}
-.form-modern input,.form-modern select,.form-modern textarea{border:0;outline:0;width:100%;background:transparent;font:inherit;color:inherit}
-.form-modern .control:focus-within{border-color:var(--green);box-shadow:0 0 0 3px rgba(6,177,250,.15)}
-.form-modern .floating>label{position:absolute;left:12px;top:50%;transform:translateY(-50%);background:#fff;padding:0 6px;color:#64748b;pointer-events:none;transition:.15s;font-size:.95rem}
-.form-modern .floating:focus-within>label,.form-modern .floating.has-value>label{top:-8px;font-size:.75rem;color:var(--green)}
-.quick{display:flex;flex-wrap:wrap;gap:8px}
-.quick .chip{cursor:pointer}
-.stepper{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.stepper .dot{width:8px;height:8px;border-radius:999px;background:#e2e8f0}
-.stepper .dot.active{background:var(--green)}
-.progress{height:8px;background:#e2e8f0;border-radius:999px;overflow:hidden;margin-bottom:12px}
-.progress .bar{height:100%;width:0%;background:var(--green)}
-.actions{display:flex;gap:8px;justify-content:space-between;margin-top:6px}
-.actions .spacer{flex:1}
-.btn[disabled]{opacity:.55;cursor:not-allowed;filter:grayscale(.2)}
-.preview{background:#0b1220;color:#e2e8f0;border-radius:12px;padding:10px 12px;border:1px solid #0f1a2e;font-family:ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap;line-height:1.4}
-
-/* No-Nav variant: align actions to right and hide nav buttons if exist */
-.actions{justify-content:flex-end}
-#prev-step, #next-step{display:none !important}
-
-/* ===== Readability tweaks for order form ===== */
-.form-modern .grid { gap:14px }
-@media(max-width:700px){ .form-modern .grid { grid-template-columns:1fr !important } }
-.form-modern .control{ padding:12px 14px }
-.form-modern input, .form-modern select, .form-modern textarea{ font-size:1rem }
-.form-modern .floating>label{ color:#334155 } /* darker label for better contrast */
-.form-modern .floating:focus-within>label,
-.form-modern .floating.has-value>label{ color:var(--green); font-weight:700 }
-
-
-/* ===== Facility chips ===== */
-.facility-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
-.facility{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #E2E8F0;border-radius:999px;padding:6px 10px;font-size:.9rem;line-height:1}
-.facility svg{width:16px;height:16px}
-.facility[title]{position:relative}
-.facility[title]:hover{box-shadow:0 6px 14px rgba(0,0,0,.06)}
-
-</style>
+    @media (max-width:1024px){.hero-grid{grid-template-columns:1fr;gap:18px}}
+    @media (max-width:920px){.search form{grid-template-columns:1fr}.cta{display:none}}
+    @media (max-width:700px){.container{padding:14px}.btn{width:100%}.card{grid-template-columns:1fr;align-items:start}}
+  </style>
 </head>
 <body>
-  <script>
-    // Konfigurasi brand global
-    window.MULTIBUS = { brand: 'MultiBus', area: 'Sulawesi Selatan', wa: '6285256473344' };
-  </script>
-
   <header>
-    <div class="container nav">
-      <div class="brand" aria-label="MultiBus">
-        <img src="image/multibus_logo.png" alt="MultiBus" loading="lazy" decoding="async" />
+    <div class="row container">
+      <div class="logo" aria-label="multibus logo">
+        <span class="dot" aria-hidden="true"></span>
+        <span>multibus</span>
       </div>
-      <div style="display:flex; gap:10px; align-items:center;">
-        <a class="map-button" href="#po" title="Daftar PO">🚌 Daftar PO</a>
-        <a class="btn" href="#order">Pesan via WhatsApp</a>
-      </div>
+      <nav class="cta">
+        <a href="carter-multibus.html" class="btn">Layanan Carter Bus</a>
+      </nav>
     </div>
   </header>
 
   <section class="hero">
-    <div class="container hero-inner" style="padding:36px 24px 42px 24px;">
-      <div class="stack">
-        <div class="pill">Multi‑PO • Minibus 8–14 • Medium 30 • Big Bus 40 seat</div>
-        <h1>Sewa Bus & Minibus di Sulawesi Selatan</h1>
-        <p class="muted">Pilih PO favorit, lihat foto unit & kisaran harga, lalu order cepat via WhatsApp. Cocok untuk dinas, tour, event, dan rombongan keluarga.</p>
-        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:6px;">
-          <a class="btn orange" href="#po">Lihat PO & Harga</a>
-          <a class="btn secondary" href="#order">Form Pemesanan</a>
-        </div>
-        <div style="display:flex; gap:14px; margin-top:12px; flex-wrap:wrap;">
-          <div class="feature"><div class="icon">🖼️</div><div><strong>Foto Asli Unit</strong><div class="muted">Setiap PO upload galeri</div></div></div>
-          <div class="feature"><div class="icon">💬</div><div><strong>WA ke Admin MultiBus</strong><div class="muted">Tanpa perantara rumit</div></div></div>
-          <div class="feature"><div class="icon">💳</div><div><strong>Harga Per PO</strong><div class="muted">Transparan & fleksibel</div></div></div>
+    <div class="container hero-grid">
+      <div>
+        <h1>Pemesanan Tiket Bus di Sulawesi</h1>
+        <p>Pilih rute & tanggal keberangkatan, lalu lihat daftar mitra PO lengkap dengan jam keberangkatan masing-masing. Semua pesanan dapat langsung dikirim ke WhatsApp admin.</p>
+        <div id="searchBox" class="search">
+          <form id="searchForm">
+            <div class="field">
+              <label for="from">Dari</label>
+              <select id="from" required>
+                <option value="" selected disabled>Pilih kota asal</option>
+                <option>Pinrang</option>
+                <option>Parepare</option>
+                <option>Bone</option>
+                <option>Sengkang</option>
+                <option>Bulukumba</option>
+                <option>Makassar</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="to">Ke</label>
+              <select id="to" required>
+                <option value="" selected disabled>Pilih kota tujuan</option>
+                <option>Makassar</option>
+                <option>Pinrang</option>
+                <option>Parepare</option>
+                <option>Bone</option>
+                <option>Sengkang</option>
+                <option>Bulukumba</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="date">Tanggal Berangkat</label>
+              <input id="date" type="date" required min="" />
+            </div>
+            <div class="swap">
+              <button type="button" id="swapBtn" title="Tukar asal & tujuan">⇅ Tukar</button>
+            </div>
+            <button class="primary" type="submit">Cari Bus</button>
+          </form>
         </div>
       </div>
-      <div class="card" style="padding:16px;">
-        <div class="fleet-cover"><img src="image/og-cover.webp" alt="Bus cover" onerror="this.src='image/placeholder.jpg'" loading="lazy" decoding="async"/></div>
-        <div class="chips" style="margin-top:12px">
-          <span class="chip">AC Dingin</span>
-          <span class="chip">Audio & USB</span>
-          <span class="chip">Bagasi Luas</span>
-          <span class="chip">Reclining Seat*</span>
-        </div>
-        <p class="muted" style="margin-top:8px;font-size:.9rem">*Fitur tergantung tipe & PO. Konfirmasi ke admin.</p>
+      <div class="hero-visual" aria-hidden="true">
+        <img src="image/hiace_sulawesi.webp" alt="Cover Multibus" loading="lazy">
       </div>
     </div>
   </section>
 
-  <main class="container" style="padding-top:28px">
-    <section id="po">
-      <div class="section-title">
-        <h2>Daftar PO & Armada</h2>
-        <div class="toolbar">
-          <input id="search-po" type="search" placeholder="Cari PO…" />
-          <button class="filter-btn active" data-type="all">Semua</button>
-          <button class="filter-btn" data-type="hiace">Minibus</button>
-          <button class="filter-btn" data-type="medium">Medium</button>
-          <button class="filter-btn" data-type="big">Big Bus</button>
-        </div>
-      </div>
-      <div class="grid armada" id="po-grid"></div>
-      <div id="po-more"></div>
-    </section>
-
-    <div class="divider" style="height:1px;background:linear-gradient(90deg, rgba(0,0,0,0), rgba(2,6,23,.2), rgba(0,0,0,0)); margin: 20px 0;"></div>
-
-    <section class="grid" id="order" style="grid-template-columns:1.2fr .8fr">
-      <div class="card form-modern" style="padding:18px">
-  <div class="stepper" aria-hidden="true">
-    <span class="dot active" data-step="1"></span>
-    <span class="dot" data-step="2"></span>
-    <span class="dot" data-step="3"></span>
-  </div>
-  <div class="progress" aria-hidden="true"><div class="bar" id="progress-bar"></div></div>
-
-  <h2 style="margin:0 0 6px 0">Pemesanan Cepat</h2>
-  <p class="muted" style="margin:0 0 12px">3 langkah: Pilih PO → Detail Perjalanan → Review & Kirim WhatsApp</p>
-
-  <form id="wa-form" class="stack" onsubmit="return false;">
-    <!-- STEP 1 -->
-    <div class="stack step" data-step="1">
-      <div class="grid" style="grid-template-columns:1fr 1fr">
-        <div class="field floating">
-          <div class="control">
-            <select id="poSelect" required></select>
-          </div>
-          <label for="poSelect">Pilih PO</label>
-        </div>
-        <div class="field floating">
-          <div class="control">
-            <select id="armada" required>
-              <option value="Minibus 8–14" data-min="1"  data-max="14">Minibus (8–14 seat)</option>
-              <option value="Medium Bus 30" data-min="15" data-max="30">Medium Bus (30 seat)</option>
-              <option value="Big Bus 40"    data-min="31" data-max="40">Big Bus (40 seat)</option>
-            </select>
-          </div>
-          <label for="armada">Jenis Armada</label>
-        </div>
-      </div>
-      <div class="grid" style="grid-template-columns:1fr 1fr">
-        <div class="field floating">
-          <div class="control"><input type="date" id="tanggal" required></div>
-          <label for="tanggal">Tanggal Jemput</label>
-        </div>
-        <div class="field floating">
-          <div class="control"><input type="time" id="jam"></div>
-          <label for="jam">Jam Jemput</label>
-        </div>
-      </div>
+  <section id="hasil" class="section">
+    <div class="container">
+      <h2 style="margin:0 0 8px">PO Tersedia</h2>
+      <p id="resultMeta" style="margin:0 0 16px;color:var(--muted)">Masukkan rute & tanggal, lalu klik <b>Cari Bus</b>.</p>
+      <div id="cards" class="results"></div>
     </div>
-
-    <!-- STEP 2 -->
-    <div class="stack step" data-step="2" hidden>
-      <div class="grid" style="grid-template-columns:1fr 1fr">
-        <div class="field floating">
-          <div class="control"><input type="number" id="durasi" min="1" value="1" required></div>
-          <label for="durasi">Durasi (hari)</label>
-        </div>
-        <div class="field floating">
-          <div class="control"><input type="number" id="penumpang" min="1" placeholder="cth: 30" required></div>
-          <label for="penumpang">Jumlah Penumpang</label>
-        </div>
-      </div>
-      <div class="quick">
-        <span class="chip" data-dur="1">1 hari</span>
-        <span class="chip" data-dur="2">2 hari</span>
-        <span class="chip" data-dur="3">3 hari</span>
-        <span class="chip" data-seat="12">12 org</span>
-        <span class="chip" data-seat="30">30 org</span>
-        <span class="chip" data-seat="40">40 org</span>
-      </div>
-      <div class="grid" style="grid-template-columns:1fr 1fr">
-        <div class="field floating">
-          <div class="control"><input type="text" id="jemput" placeholder=""></div>
-          <label for="jemput">Titik Jemput</label>
-        </div>
-        <div class="field floating">
-          <div class="control"><input type="text" id="tujuan" placeholder=""></div>
-          <label for="tujuan">Tujuan</label>
-        </div>
-      </div>
-    </div>
-
-    <!-- STEP 3 -->
-    <div class="stack step" data-step="3" hidden>
-      <div class="field floating">
-        <div class="control"><input type="text" id="nama" placeholder="" required></div>
-        <label for="nama">Nama Pemesan</label>
-      </div>
-      <div class="field floating">
-        <div class="control"><textarea id="catatan" rows="3" placeholder=""></textarea></div>
-        <label for="catatan">Catatan Tambahan</label>
-      </div>
-
-      <div class="preview" id="wa-preview" aria-live="polite"></div>
-      <div style="display:flex; gap:8px; flex-wrap:wrap"><button class="btn secondary" type="button" id="copy-wa">Salin Pesan</button><button class="btn" id="send-wa" type="button">Kirim ke WhatsApp Admin</button></div>
-      <p class="notice" style="font-size:.95rem;color:#0f172a;background:#FFFBEB;border:1px solid #FDE68A;padding:10px 12px;border-radius:12px">
-        Harga per PO dapat berbeda tergantung rute, tanggal, dan durasi. Tanyakan promo ke Admin MultiBus.
-      </p>
-    </div>
-
-    <!-- Actions -->
-    
-  </form>
-</div>
-      <aside class="stack" style="gap:14px">
-        <div class="card" style="padding:16px">
-          <h3 style="margin:0 0 4px 0">Tentang MultiBus</h3>
-          <div class="stack">
-            <div class="feature"><div class="icon">🧭</div><div><strong>Satu Tempat</strong><div class="muted">Kumpulkan banyak PO di berbagai kota</div></div></div>
-            <div class="feature"><div class="icon">🖼️</div><div><strong>Foto Transparan</strong><div class="muted">Owner upload foto unit</div></div></div>
-            <div class="feature"><div class="icon">💬</div><div><strong>WA Langsung</strong><div class="muted">Tanpa ribet, konfirmasi cepat</div></div></div>
-          </div>
-        </div>
-        <div class="card" style="padding:16px">
-          <h3 style="margin:0 0 6px 0">Info Penting</h3>
-          <ul class="muted" style="margin:0 0 0 18px; line-height:1.6">
-            <li>DP diperlukan untuk <em>lock</em> tanggal (besaran mengikuti kebijakan PO).</li>
-            <li><strong>Titik jemput:</strong> dalam kota maksimal 2 titik yang searah ke tujuan. Di luar kota/tidak searah dikenakan biaya tambahan.</li>
-            <li><strong>Durasi pemakaian:</strong> 12/24 jam per hari sesuai paket. Overtime dikenakan biaya per jam sesuai kebijakan PO.</li>
-            <li>Biaya tol, parkir, BBM, dan uang makan/akomodasi driver menyesuaikan rute dan PO.</li>
-            <li>Pembatalan dan reschedule mengikuti kebijakan masing‑masing PO.</li>
-            <li>Pastikan jumlah penumpang & barang sesuai kapasitas. Mohon informasikan barang berukuran besar sebelumnya.</li>
-            <li>Rute ke area tertentu (mis. wisata pegunungan/akses sempit) mungkin memerlukan izin atau biaya tambahan.</li>
-            <li>Detail final (harga, fasilitas, itinerary) dikonfirmasi saat chat dengan Admin/PO.</li>
-          </ul>
-        </div>
-      </aside>
-    </section>
-
-    <section id="seo-lokasi" class="container" style="padding:4px 24px 24px 24px">
-      <div class="card" style="padding:16px">
-        <h2 style="margin:0 0 8px 0">Layanan Sewa Bus di Sulawesi Selatan</h2>
-        <p class="muted" style="margin:0 0 10px 0">Klik cepat ke pencarian PO berdasarkan kota/tujuan:</p>
-        <div class="chips">
-          <a class="chip" href="?q=pinrang">Sewa Bus Pinrang</a>
-          <a class="chip" href="?q=parepare">Sewa Bus Parepare</a>
-          <a class="chip" href="?q=makassar">Sewa Bus Makassar</a>
-          <a class="chip" href="?q=sidrap">Sewa Bus Sidrap</a>
-          <a class="chip" href="?q=barru">Sewa Bus Barru</a>
-          <a class="chip" href="?q=toraja">Sewa Bus Toraja</a>
-          <a class="chip" href="?q=malino">Sewa Bus Malino</a>
-          <a class="chip" href="?q=bira">Sewa Bus Bira</a>
-          <a class="chip" href="?q=gowa">Sewa Bus Gowa</a>
-          <a class="chip" href="?q=maros">Sewa Bus Maros</a>
-          <a class="chip" href="?q=bone">Sewa Bus Bone</a>
-          <a class="chip" href="?q=wajo">Sewa Bus Wajo</a>
-          <a class="chip" href="?q=palopo">Sewa Bus Palopo</a>
-          <a class="chip" href="?q=soppeng">Sewa Bus Soppeng</a>
-          <a class="chip" href="?q=pangkep">Sewa Bus Pangkep</a>
-          <a class="chip" href="?q=luwu">Sewa Bus Luwu</a>
-        </div>
-        <p class="muted" style="font-size:.9rem;margin-top:10px">Kami melayani perjalanan wisata, dinas, event, antar kota & provinsi dari kota-kota di atas dan sekitarnya. Armada tersedia Minibus 8–14, Medium 30, dan Big Bus 40 seat.</p>
-      </div>
-    </section>
-  </main>
+  </section>
 
   <footer>
-    <div class="container" style="padding:24px 24px 28px 24px">
-      <div class="cols">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;row-gap:10px">
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="image/footer.png" alt="Logo Multibus" style="max-height:40px">
         <div>
-          <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px">
-            <img src="image/footer.png" alt="Logo MultiBus" style="height:38px" loading="lazy" decoding="async" />
-            <div>
-              <strong>MultiBus</strong>
-              <div class="muted" style="color:#0F172A">Aggregator Multi‑PO: Minibus, Medium & Big Bus</div>
-            </div>
-          </div>
-          <div class="chips">
-            <span class="chip">08.00–21.00 WITA</span>
-            <span class="chip">WhatsApp Fast-Response</span>
-            <span class="chip">Data PO Terverifikasi</span>
-          </div>
-        </div>
-        <div>
-          <div style="display:grid; gap:10px">
-            <a class="btn" href="#po">Lihat PO Sekarang</a>
-            <a class="btn ghost" href="#order">📄 Form Pemesanan</a>
-          </div>
+          <div style="font-weight:800">multibus</div>
+          <div>Pesan tiket bus multi-PO untuk rute di Sulawesi.</div>
         </div>
       </div>
-      <div style="opacity:.65; font-size:.8rem; margin-top:16px">© <span id="year">2025</span> MultiBus. All rights reserved.</div>
+      <div>© 2025 MultiBus. All rights reserved.</div>
     </div>
   </footer>
 
-  <!-- Floating helper -->
-  <div class="floating-wa">
-    <a class="btn wa" id="floating-wa" aria-label="Chat Whatsapp">
-      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.52 0 .2 5.32.2 11.86c0 2.09.55 4.13 1.6 5.93L0 24l6.38-1.75a11.78 11.78 0 0 0 5.68 1.44h.01c6.53 0 11.86-5.33 11.86-11.86 0-3.17-1.23-6.14-3.41-8.32Z" fill="#25D366"/>
-        <path d="M9.84 6.91c-.22-.49-.45-.5-.66-.5-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37s-1.05 1.02-1.05 2.48 1.08 2.87 1.23 3.07c.15.2 2.1 3.35 5.19 4.56.72.31 1.28.49 1.72.63.72.23 1.38.2 1.9.12.58-.09 1.8-.73 2.05-1.44.25-.71.25-1.32.17-1.44-.07-.12-.27-.2-.57-.35-.3-.15-1.8-.88-2.08-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.95 1.18-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.46-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.47.13-.62.14-.14.31-.37.46-.56.15-.2.2-.34.3-.54.1-.2.05-.39-.02-.54-.07-.15-.62-1.54-.86-2.11Z" fill="#fff"/>
-      </svg>
-      Chat Whatsapp
-    </a>
-  </div>
-
   <script>
-    (()=>{
-      // ====== DATA PO (Edit di sini) ======
-      const PO_LIST = [
-        {
-          name: 'PO Cahaya Bone',
-          logo: 'assets/cahaya-bone/logo.png',
-          images: ['assets/cahaya-bone/1.jpg','assets/cahaya-bone/2.jpg','assets/cahaya-bone/3.jpg'],
-          armada: { hiace: {}, medium: {}, big: {} },
-          fasilitas: ['AC Dingin','Audio','USB Charger','Bagasi','Reclining Seat'],
-          price_from: 1300000
-        },,
-        {
-          name: 'PO Sumber Abadi',
-          logo: 'assets/sumber-abadi/logo.png',
-          images: ['assets/sumber-abadi/1.jpg'],
-          armada: { medium: {} },
-          fasilitas: ['AC Dingin','Audio','Bagasi','Mic','LCD TV', 'Reclining Seat'],
-          price_from: 2000000
-        },
-        {
-          name: 'PO Sulawesi Trans',
-          logo: 'assets/sulawesi-trans/logo.png',
-          images: ['assets/sulawesi-trans/1.jpg','assets/sulawesi-trans/2.jpg'],
-          armada: { hiace: {}, medium: {} },
-          fasilitas: ['AC Dingin','Audio','USB Charger','Bagasi','Reclining Seat'],
-          price_from: 1500000
-        }
-      ];
+  const PO_LIST = [
+    { id:"cb", name:"PO Cahaya Bone", seats:8, type:"HiAce / Minibus", base:135000, times:["09:00","16:00"], imgs:["image/assets/unit/hiace-putih.png","images/cahaya-bone/2.jpg"], routes:["Pinrang-Makassar","Makassar-Pinrang","Parepare-Makassar","Makassar-Parepare","Bone-Makassar","Makassar-Bone","Sengkang-Makassar","Makassar-Sengkang","Bulukumba-Makassar","Makassar-Bulukumba"] },
+    { id:"yt", name:"PO Yunaka Trans", seats:5, type:"Innova / Avanza", base:136000, times:["08:00","19:00"], imgs:["image/assets/unit/innova-hitam.png","images/yunaka-trans/2.jpg"], routes:["Pinrang-Makassar","Makassar-Pinrang","Makassar-Parepare","Parepare-Makassar"] }
+  ];
 
-      // ====== UTIL ======
-      const idr = (n)=> new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(Number(n||0));
-      const waLink = (number, text='') => `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
+  const PRICE_MULT = {
+    "Pinrang-Makassar":1.00, "Makassar-Pinrang":1.00,
+    "Parepare-Makassar":1.00, "Makassar-Parepare":1.00,
+    "Bone-Makassar":1.00, "Makassar-Bone":1.00,
+    "Sengkang-Makassar":140000/135000, "Makassar-Sengkang":140000/135000,
+    "Bulukumba-Makassar":1.00, "Makassar-Bulukumba":1.00
+  };
 
-      // Map facility keyword -> emoji/icon
-      function facilityIcon(name=''){
-        const n = (name||'').toLowerCase();
-        if(n.includes('ac')) return '❄️';
-        if(n.includes('usb')) return '🔌';
-        if(n.includes('audio')) return '🔊';
-        if(n.includes('mic')) return '🎤';
-        if(n.includes('tv') || n.includes('lcd')) return '📺';
-        if(n.includes('led')) return '💡';
-        if(n.includes('bagasi')) return '🧳';
-        if(n.includes('reclining')) return '🪑';
-        if(n.includes('wifi')) return '📶';
-        return '🚌';
-      }
+  function rupiah(n){ return new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(n); }
+  function q(sel){ return document.querySelector(sel); }
+  function el(type, cls){ const e=document.createElement(type); if(cls) e.className=cls; return e; }
 
-      // Base folder untuk foto armada
-      const IMG_BASE = 'image/';
-      const resolveImg = (p) => {
-        if(!p) return IMG_BASE + 'placeholder.jpg';
-        if(/^https?:\/\//.test(p) || p.startsWith('/')) return p; // absolute URL atau root path
-        return p.startsWith('image/') ? p : IMG_BASE + p; // tambahkan prefix jika perlu
-      };
+  function updateOptions(){
+    const fromSel=q('#from');
+    const toSel=q('#to');
+    const fromVal=fromSel.value;
+    const toVal=toSel.value;
+    Array.from(fromSel.options).forEach(opt=>{ if(!opt.value) return; opt.disabled=(opt.value===toVal); });
+    Array.from(toSel.options).forEach(opt=>{ if(!opt.value) return; opt.disabled=(opt.value===fromVal); });
+    if(fromVal && fromVal===toVal){ toSel.value=''; }
+  }
 
-      // ====== MetaMask-safe helper (no-op in sandbox) ======
-      async function connectMetaMask(options = { requestAccounts:false }){
-        try{
-          if(!window.ethereum || typeof window.ethereum.request !== 'function'){
-            console.warn('MetaMask tidak tersedia di lingkungan ini.');
-            return { available:false, accounts:[], chainId:null };
-          }
-          let accounts = [];
-          if(options.requestAccounts){
-            accounts = await window.ethereum.request({ method:'eth_requestAccounts' });
-          }
-          const chainId = await window.ethereum.request({ method:'eth_chainId' });
-          return { available:true, accounts, chainId };
-        }catch(err){
-          console.error('MetaMask error (ditangani):', err);
-          return { available:true, accounts:[], chainId:null, error: String(err && err.message || err) };
-        }
-      }
+  q('#swapBtn').addEventListener('click', ()=>{
+    const a=q('#from'); const b=q('#to');
+    const temp=a.value; a.value=b.value; b.value=temp;
+    updateOptions();
+  });
 
-      const poGrid = document.getElementById('po-grid');
-      const searchInput = document.getElementById('search-po');
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const MAX_INITIAL = 3; let showAll = false;
+  function isoLocalDate(d){
+    const y=d.getFullYear();
+    const m=String(d.getMonth()+1).padStart(2,'0');
+    const day=String(d.getDate()).padStart(2,'0');
+    return `${y}-${m}-${day}`;
+  }
 
-      function renderPOList(filterType='all', q=''){
-        poGrid.innerHTML = '';
-        const list = PO_LIST.filter(po=> po.name.toLowerCase().includes(q.toLowerCase()));
-        const baseMode = (filterType==='all' && !q);
-        const tooMany = baseMode && list.length > MAX_INITIAL && !showAll;
-        const displayed = tooMany ? list.slice(0, MAX_INITIAL) : list;
+  const today = new Date();
+  const dateInput = q('#date');
+  const todayStr = isoLocalDate(today);
+  dateInput.min = todayStr;
+  if(!dateInput.value) dateInput.value = todayStr;
 
-        displayed.forEach((po, idx)=>{
-          const has = { hiace: ('hiace' in po.armada), medium: ('medium' in po.armada), big: ('big' in po.armada) };
-          if(filterType!=='all' && !has[filterType]) return;
+  q('#from').addEventListener('change', updateOptions);
+  q('#to').addEventListener('change', updateOptions);
 
-          const rawImgs = (Array.isArray(po.images) && po.images.length) ? po.images : ['placeholder.jpg'];
-          const imagesArr = rawImgs.map(resolveImg);
-          const firstImg = imagesArr[0] ? `<img src="${imagesArr[0]}" alt="${po.name}" loading="lazy" decoding="async" sizes="(max-width:700px) 100vw, (max-width:1000px) 50vw, 33vw" onerror="this.onerror=null; this.src='image/placeholder.jpg'"/>` : '🚌';
-          const dotsHtml = imagesArr.map((_,i)=> `<span class="dot ${i===0?'active':''}" data-i="${i}" aria-label="Slide ${i+1}"></span>`).join('\n');
-          const carouselHtml = `
-            <div class="fleet-cover carousel" data-idx="${idx}">
-              <div class="carousel-frame">${firstImg}</div>
-              ${imagesArr.length>1 ? `<button class="nav prev" aria-label="Sebelumnya">‹</button><button class="nav next" aria-label="Berikutnya">›</button><div class="dots">${dotsHtml}</div>` : ``}
-            </div>`;
-          const priceChip = (label,key)=> (po.armada[key] && Number.isFinite(+po.armada[key].from))
-            ? `<span class="chip"><strong>${label}</strong> mulai <span class="price">${idr(po.armada[key].from)}</span> <small>/hari</small></span>`
-            : '';
+  q('#searchForm').addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const from = q('#from').value; const to = q('#to').value; const date = q('#date').value;
+    if(!from || !to || !date) return;
+    if(from === to){ alert('Kota asal dan tujuan tidak boleh sama.'); return; }
 
-          const card = document.createElement('article');
-          card.className = 'card po-card';
-          card.setAttribute('data-has', Object.keys(has).filter(k=>has[k]).join(','));
-          card.innerHTML = `
-            <div class="po-head">
-              <img src="${po.logo}" alt="${po.name}" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2236%22 height=%2236%22%3E%3Crect width=%22100%25%22 height=%22100%25%22 rx=%229%22 fill=%22%23ffffff%22/%3E%3Ctext x=%2250%25%22 y=%2255%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2210%22 font-family=%22Arial%22 fill=%22%23910606%22%3EPO%3C/text%3E%3C/svg%3E'"/>
-              <div>
-                <strong>${po.name}</strong>
-              </div>
-            </div>
-            ${carouselHtml}
-            <div class="chips">${po.price_from ? `<span class="chip"><strong>Mulai</strong> <span class="price">${idr(po.price_from)}</span> <small>/hari</small></span>` : ''}${priceChip('Minibus','hiace')}${priceChip('Medium','medium')}${priceChip('Big Bus','big')}</div>
-            
-            <div class="po-info" style="font-size:.9rem; line-height:1.4"><strong>Armada tersedia:</strong> ${[has.hiace? 'Minibus (8–14 seat)': null, has.medium? 'Medium Bus (30 seat)': null, has.big? 'Big Bus (40 seat)': null].filter(Boolean).join(', ') || 'Hubungi admin untuk detail'}<br/><strong>Fasilitas:</strong><div class="facility-list">${(Array.isArray(po.fasilitas) && po.fasilitas.length) ? po.fasilitas.map(f => `<span class="facility" title="${f}">${facilityIcon(f)} <span>${f}</span></span>`).join('') : 'Tergantung PO'}</div></div>
-            <p class="muted"
-" style="font-size:.8rem">Harga estimasi — final saat chat dengan PO.</p>
-          `;
-          poGrid.appendChild(card);
+    const key = `${from}-${to}`;
+    const mult = PRICE_MULT[key] ?? 1;
 
-          if (imagesArr.length > 1) {
-            const cover = card.querySelector('.carousel');
-            const frame = cover.querySelector('.carousel-frame img');
-            if(frame){ frame.onerror = ()=>{ frame.onerror=null; frame.src='image/placeholder.jpg'; }; }
-            let ci = 0;
-            const go = (n)=>{ ci = (n + imagesArr.length) % imagesArr.length; frame.src = imagesArr[ci]; cover.querySelectorAll('.dot').forEach((d,k)=> d.classList.toggle('active', k===ci)); };
-            cover.querySelector('.nav.prev')?.addEventListener('click', ()=> go(ci-1));
-            cover.querySelector('.nav.next')?.addEventListener('click', ()=> go(ci+1));
-            cover.querySelectorAll('.dot').forEach(d=> d.addEventListener('click', ()=> go(+d.dataset.i)));
-          }
-        });
+    q('#resultMeta').innerHTML = `Hasil untuk <b>${from} → ${to}</b> tanggal <b>${formatDateID(date)}</b>. Jam keberangkatan sesuai masing-masing PO.`;
 
-        if(!poGrid.children.length){
-          poGrid.innerHTML = '<div class="muted">Tidak ada PO yang cocok dengan filter.</div>';
-        }
-
-        // Toggle Lihat Semua / Lebih Sedikit
-        const moreWrap = document.getElementById('po-more');
-        if (baseMode && list.length > MAX_INITIAL) {
-          const remaining = Math.max(0, list.length - MAX_INITIAL);
-          moreWrap.innerHTML = `<div class="more-wrap" style="display:flex;justify-content:center;margin-top:8px">
-            <button id="btn-more" class="filter-btn" aria-expanded="${!tooMany}">${tooMany ? `Lihat semua PO (${remaining} lagi)` : 'Tampilkan lebih sedikit'}</button>
-          </div>`;
-          document.getElementById('btn-more').onclick = ()=>{ showAll = !showAll; renderPOList(filterType, q); };
-        } else {
-          moreWrap.innerHTML = '';
-        }
-
-        // Rebind for new buttons
-        document.querySelectorAll('[data-order]').forEach(btn=>{
-          btn.addEventListener('click', ()=>{
-            const idx = +btn.getAttribute('data-idx');
-            const type = btn.getAttribute('data-type');
-            const po = PO_LIST[idx];
-            const armadaLabel = type==='hiace' ? 'Minibus 8–14' : (type==='medium' ? 'Medium Bus 30' : 'Big Bus 40');
-            const price = (po.armada[type] && Number.isFinite(+po.armada[type].from)) ? ` (estimasi mulai ${idr(po.armada[type].from)}/hari)` : '';
-            const text = [
-              `Halo Admin MultiBus,`,
-              `Saya ingin sewa ${armadaLabel}${price} (PO: ${po.name}).`,
-              `Tanggal: ____ (Jam: ____)`,
-              `Durasi: ____ hari`,
-              `Jemput: ____`,
-              `Tujuan: ____`,
-              `Penumpang: ____ orang`,
-              `Nama: ____`,
-              `Terima kasih.`
-            ].filter(Boolean).join('\n');
-            window.open(waLink(MULTIBUS.wa, text),'_blank');
-          });
-        });
-      }
-
-      // Init render
-      const params = new URLSearchParams(location.search);
-      if (params.has('q')) { searchInput.value = params.get('q'); }
-      renderPOList(document.querySelector('.filter-btn.active')?.dataset.type || 'all', searchInput.value);
-
-      // Search & filter
-      searchInput.addEventListener('input', ()=>{
-        const active = document.querySelector('.filter-btn.active')?.dataset.type || 'all';
-        showAll = true; // saat mencari, tampilkan semua hasil
-        renderPOList(active, searchInput.value);
-        const url = new URL(location);
-        if (searchInput.value) url.searchParams.set('q', searchInput.value); else url.searchParams.delete('q');
-        history.replaceState({}, '', url);
-      });
-      filterBtns.forEach(b=> b.addEventListener('click', ()=>{
-        filterBtns.forEach(x=>x.classList.remove('active'));
-        b.classList.add('active');
-        showAll = true; // saat filter, tampilkan semua hasil filter
-        renderPOList(b.dataset.type, searchInput.value);
-      }));
-
-      // ====== FORM ======
-      const poSelect = document.getElementById('poSelect');
-      const armadaSelect = document.getElementById('armada');
-      const typeKeyFromLabel = (label)=> label.startsWith('Minibus') ? 'hiace' : (label.startsWith('Medium') ? 'medium' : 'big');
-      const getHas = (po)=> ({ hiace: !!po.armada.hiace, medium: !!po.armada.medium, big: !!po.armada.big });
-      function syncArmadaOptions(){
-        const po = PO_LIST[+poSelect.value];
-        const has = getHas(po);
-        Array.from(armadaSelect.options).forEach(opt=>{
-          const key = typeKeyFromLabel(opt.value);
-          opt.disabled = !has[key];
-        });
-        if(armadaSelect.selectedOptions[0]?.disabled){
-          const firstAvail = Array.from(armadaSelect.options).find(o=>!o.disabled);
-          if(firstAvail) armadaSelect.value = firstAvail.value;
-        }
-      }
-      PO_LIST.forEach((po,i)=>{
-        const opt=document.createElement('option');
-        opt.value=i; opt.textContent=po.name; poSelect.appendChild(opt);
-      });
-      syncArmadaOptions();
-
-      document.getElementById('send-wa').addEventListener('click', ()=>{
-        const po = PO_LIST[+poSelect.value];
-        const payload = {
-          po: po.name,
-          armada: document.getElementById('armada').value,
-          tanggal: document.getElementById('tanggal').value,
-          jam: document.getElementById('jam').value,
-          durasi: document.getElementById('durasi').value,
-          jemput: document.getElementById('jemput').value,
-          tujuan: document.getElementById('tujuan').value,
-          penumpang: document.getElementById('penumpang').value,
-          nama: document.getElementById('nama').value,
-          catatan: document.getElementById('catatan').value,
-        };
-        const lines = [
-          `Halo Admin MultiBus,`,
-          `Saya ingin sewa ${payload.armada}. (PO: ${payload.po})`,
-          `Tanggal: ${payload.tanggal || '____'} ${payload.jam? '('+payload.jam+')':''}`,
-          `Durasi: ${payload.durasi || '____'} hari`,
-          `Jemput: ${payload.jemput || '____'}`,
-          `Tujuan: ${payload.tujuan || '____'}`,
-          `Penumpang: ${payload.penumpang || '____'} orang`,
-          `Nama: ${payload.nama || '____'}`,
-          payload.catatan? `Catatan: ${payload.catatan}`: null,
-          `Dikirim via MultiBus. Terima kasih.`
-        ].filter(Boolean).join('\n');
-        window.open(waLink(MULTIBUS.wa, lines), '_blank');
+    const list = PO_LIST
+      .filter(po => !po.routes || po.routes.length===0 || po.routes.includes(key))
+      .map(po => {
+        const price = Math.round(po.base * mult);
+        return { ...po, price, times: po.times.map(t => ({ time:t })) };
       });
 
-      const manualBtn=document.getElementById('cta-wa-manual');
-      poSelect.addEventListener('change', ()=>{
-        if(manualBtn) manualBtn.href = waLink(MULTIBUS.wa, 'Halo Admin MultiBus, saya ingin bertanya ketersediaan armada.');
-        syncArmadaOptions();
+    renderCards(list, {from,to,date});
+    window.location.hash = '#hasil';
+  });
+
+  function renderCards(items, ctx){
+    const wrap = q('#cards');
+    wrap.innerHTML = '';
+    if(!items.length){ wrap.innerHTML = '<div style="padding:14px;border:1px dashed #cbd5e1;border-radius:12px;background:#f8fafc">Tidak ada PO tersedia untuk rute ini.</div>'; return; }
+    items.forEach(po =>{
+      const card = el('div','card');
+
+      const img = el('img','thumb');
+      const src = (po.imgs && po.imgs[0]) || '';
+      if(src){ img.src = src; img.alt = po.name; } else { img.style.display='none'; }
+
+      const left = el('div');
+      left.innerHTML = `<div class="title">${po.name}</div>\n        <div style="color:var(--muted);font-size:14px">${po.type} • ${po.seats} seat</div>`;
+
+      const mid = el('div');
+      const times = el('div'); times.style.display='flex'; times.style.flexWrap='wrap'; times.style.gap='8px';
+      po.times.forEach((s)=>{
+        const chip = el('button','chip');
+        chip.type='button'; chip.textContent = `${s.time}`;
+        chip.onclick = ()=> selectAndSend(po, s.time, ctx);
+        times.appendChild(chip);
       });
-      syncArmadaOptions();
-      if(manualBtn) manualBtn.href = waLink(MULTIBUS.wa, 'Halo Admin MultiBus, saya ingin bertanya ketersediaan armada.');
+      mid.append(times);
 
-      // Floating WA -> arahkan user pilih PO
-      document.getElementById('floating-wa').addEventListener('click', ()=>{
-        document.getElementById('order').scrollIntoView({behavior:'smooth'});
-      });
+      const right = el('div');
+      right.innerHTML = `<div class="money">${rupiah(po.price)}</div>`;
+      const btn = el('button','btn'); btn.textContent='Kirim ke WhatsApp';
+      btn.onclick = ()=> selectAndSend(po, po.times[0].time, ctx);
+      right.append(btn);
 
-      // Year
-      document.getElementById('year').textContent = new Date().getFullYear();
-
-      // ====== Minimal Tests (runtime assertions) ======
-      (function(){
-        try {
-          console.assert('a\nb' === ['a','b'].join('\n'), 'Join with "\\n" should create newline');
-          console.assert(Array.isArray(PO_LIST) && PO_LIST.length >= 1, 'PO_LIST harus array berisi item');
-          const wa = waLink('6285','halo');
-          console.assert(wa.startsWith('https://wa.me/'), 'waLink harus pakai wa.me');
-          console.assert(resolveImg('bus.jpg').startsWith('image/'), 'resolveImg harus menambahkan prefix image/');
-          console.assert(resolveImg('/cdn/bus.jpg') === '/cdn/bus.jpg', 'resolveImg tidak mengubah path absolut');
-          const idxSA = PO_LIST.findIndex(p=>/Sumber Abadi/i.test(p.name));
-          const idxST = PO_LIST.findIndex(p=>/Sulawesi Trans/i.test(p.name));
-          if(idxSA >= 0){ const prev = poSelect.value; poSelect.value = String(idxSA); syncArmadaOptions();
-            const opts = Array.from(document.getElementById('armada').options);
-            const oMin = opts.find(o=>o.value.startsWith('Minibus'));
-            const oMed = opts.find(o=>o.value.startsWith('Medium'));
-            const oBig = opts.find(o=>o.value.startsWith('Big'));
-            console.assert(oMin.disabled && !oMed.disabled && oBig.disabled, 'PO Sumber Abadi harus hanya Medium');
-            poSelect.value = prev; syncArmadaOptions(); }
-          if(idxST >= 0){ const prev = poSelect.value; poSelect.value = String(idxST); syncArmadaOptions();
-            const opts = Array.from(document.getElementById('armada').options);
-            const oMin = opts.find(o=>o.value.startsWith('Minibus'));
-            const oMed = opts.find(o=>o.value.startsWith('Medium'));
-            const oBig = opts.find(o=>o.value.startsWith('Big'));
-            console.assert(!oMin.disabled && !oMed.disabled && oBig.disabled, 'PO Sulawesi Trans harus Minibus dan Medium (tanpa Big)');
-            poSelect.value = prev; syncArmadaOptions(); }
-          if(PO_LIST.length > 3){
-            const saved = showAll; const prevQ = searchInput.value; const activeType = document.querySelector('.filter-btn.active')?.dataset.type || 'all';
-            showAll = false; searchInput.value=''; renderPOList('all','');
-            const cards = document.querySelectorAll('#po-grid .po-card').length;
-            console.assert(cards <= MAX_INITIAL, 'Default render harus batasi ke MAX_INITIAL saat >3 PO');
-            showAll = saved; renderPOList(activeType, prevQ);
-          }
-          const firstCard = document.querySelector('#po-grid .po-card');
-          if(firstCard){
-            const dots = firstCard.querySelectorAll('.dots .dot').length;
-            const imgsLen = (PO_LIST[0] && Array.isArray(PO_LIST[0].images)) ? PO_LIST[0].images.length : 0;
-            if(imgsLen > 1) console.assert(dots === imgsLen, 'Jumlah dot harus sama dengan jumlah gambar');
-          }
-          if(PO_LIST[0]){
-            const sample = ['Halo Admin MultiBus,',`Saya ingin sewa Minibus 8–14 (PO: ${PO_LIST[0].name}).`].join('\n');
-            console.assert(sample.includes(PO_LIST[0].name), 'WA text harus memuat nama PO');
-          }
-          const ld = document.querySelector('script[type="application/ld+json"]');
-          console.assert(!!ld, 'JSON-LD <script> harus ada');
-          if(ld){ JSON.parse(ld.textContent); }
-        } catch (e){
-          console.error('Self-test gagal:', e);
-        }
-      })();
-
-      // ====== Extra Tests: MetaMask helper should not throw ======
-      (async function(){
-        try{
-          const res = await connectMetaMask({ requestAccounts:false });
-          console.assert(res && typeof res === 'object', 'connectMetaMask harus mengembalikan object');
-          console.assert('available' in res, 'connectMetaMask response harus punya properti available');
-        }catch(e){
-          console.error('Test MetaMask gagal:', e);
-        }
-      })();
-    })();
-
-// ====== FORM UI ENHANCER (Wizard + UX) ======
-(function(){
-  // Helper floating label
-  function syncFloating(){
-    document.querySelectorAll('.floating').forEach(w=>{
-      const el = w.querySelector('input,select,textarea');
-      if(!el) return;
-      function update(){ w.classList.toggle('has-value', !!el.value); }
-      ['change','input','blur'].forEach(ev=> el.addEventListener(ev, update));
-      update();
+      card.append(img, left, mid, right);
+      wrap.append(card);
     });
   }
 
-  // Min date = today (local)
-  function todayLocal(){ const d=new Date(); d.setMinutes(d.getMinutes()-d.getTimezoneOffset()); return d.toISOString().slice(0,10); }
-  const tanggal = document.getElementById('tanggal');
-  if(tanggal){ tanggal.min = todayLocal(); }
-
-  // Wizard
-  let step = 1; const stepsTotal = 3;
-  const bar = document.getElementById('progress-bar');
-  const btnPrev = document.getElementById('prev-step');
-  const btnNext = document.getElementById('next-step');
-  const btnSend = document.getElementById('send-wa');
-
-  function showStep(n){
-    step = n;
-    document.querySelectorAll('.step').forEach(el=> el.hidden = (+el.dataset.step !== step));
-    const dots = document.querySelectorAll('.stepper .dot');
-    dots.forEach((d,i)=> d.classList.toggle('active', i < step));
-    if(bar){ bar.style.width = ((step-1)/(stepsTotal-1))*100 + '%'; }
-    if(btnPrev){ btnPrev.disabled = (step===1); }
-    if(btnNext){ btnNext.hidden = (step===stepsTotal); }
-    if(btnSend){ btnSend.hidden = (step!==stepsTotal); }
-    syncNextBtn();
-    updatePreview();
+  function selectAndSend(po, time, ctx){
+    const msg = `Halo Admin multibus,\n\nSaya ingin pesan tiket:\n• Rute: ${ctx.from} → ${ctx.to}\n• Tanggal: ${formatDateID(ctx.date)}\n• Jam: ${time}\n• PO: ${po.name} (${po.type})\n• Harga: ${rupiah(po.price)}\n\nTolong bantu proses ya. Terima kasih.`;
+    const phone = '6285255877227';
+    const wa = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+    window.open(wa,'_blank');
   }
 
-  // Validasi per step
-  const need = (id)=> (document.getElementById(id)?.value || '').trim();
-  function validStep(s){
-    if(s===1) return need('poSelect')!=='' && need('armada')!=='' && need('tanggal')!=='';
-    if(s===2) return (+need('durasi')>0) && (+need('penumpang')>0) && need('jemput')!=='' && need('tujuan')!=='';
-    if(s===3) return need('nama')!=='';
-    return true;
+  function formatDateID(iso){
+    const d = new Date(iso + 'T00:00:00');
+    return d.toLocaleDateString('id-ID',{ weekday:'long', day:'2-digit', month:'long', year:'numeric'});
   }
-  function syncNextBtn(){
-    if(btnNext && !btnNext.hidden) btnNext.disabled = !validStep(step);
-    if(btnSend && !btnSend.hidden) btnSend.disabled = !validStep(3);
-  }
-
-  btnPrev?.addEventListener('click', ()=> showStep(Math.max(1, step-1)));
-  btnNext?.addEventListener('click', ()=> { if(validStep(step)) showStep(Math.min(stepsTotal, step+1)); });
-  showStep(1);
-
-  // Auto-advance (no Prev/Next buttons)
-  let autoTimer=null;
-  function scheduleAuto(){
-    clearTimeout(autoTimer);
-    autoTimer = setTimeout(()=>{
-      if(step===1 && validStep(1)) showStep(2);
-      else if(step===2 && validStep(2)) showStep(3);
-    }, 250);
-  }
-
-  // Quick chips
-  document.querySelectorAll('.quick .chip').forEach(ch=>{
-    const dur = ch.getAttribute('data-dur');
-    const seat = ch.getAttribute('data-seat');
-    if(dur) ch.addEventListener('click', ()=> { const el=document.getElementById('durasi'); if(el){ el.value=dur; el.dispatchEvent(new Event('input')); el.dispatchEvent(new Event('change')); }});
-    if(seat) ch.addEventListener('click', ()=> { const el=document.getElementById('penumpang'); if(el){ el.value=seat; el.dispatchEvent(new Event('input')); el.dispatchEvent(new Event('change')); }});
-  });
-
-  // Live preview + copy
-  function updatePreview(){
-    const po = (window.PO_LIST && window.PO_LIST[+document.getElementById('poSelect').value]) || { name:'(pilih PO)' };
-    const armada = need('armada') || '____';
-    const tgl = need('tanggal') || '____';
-    const jam = need('jam');
-    const txt = [
-      'Halo Admin MultiBus,',
-      `Saya ingin sewa ${armada}. (PO: ${po.name})`,
-      `Tanggal: ${tgl}${jam? ' ('+jam+')':''}`,
-      `Durasi: ${need('durasi') || '____'} hari`,
-      `Jemput: ${need('jemput') || '____'}`,
-      `Tujuan: ${need('tujuan') || '____'}`,
-      `Penumpang: ${need('penumpang') || '____'} orang`,
-      `Nama: ${need('nama') || '____'}`,
-      need('catatan')? `Catatan: ${need('catatan')}`: null,
-      'Dikirim via MultiBus. Terima kasih.'
-    ].filter(Boolean).join('\n');
-    const prev = document.getElementById('wa-preview');
-    if(prev) prev.textContent = txt;
-
-    const btnCopy = document.getElementById('copy-wa');
-    if(btnCopy){
-      btnCopy.onclick = ()=> {
-        navigator.clipboard.writeText(txt).then(()=>{
-          const old = btnCopy.textContent; btnCopy.textContent='Tersalin ✓'; setTimeout(()=> btnCopy.textContent=old, 1200);
-        }).catch(()=>{});
-      };
-    }
-    syncNextBtn();
-  }
-  ['poSelect','armada','tanggal','jam','durasi','penumpang','jemput','tujuan','nama','catatan']
-    .forEach(id=> ['input','change'].forEach(ev=> document.getElementById(id)?.addEventListener(ev, ()=>{ updatePreview(); syncFloating(); scheduleAuto(); })));
-  updatePreview(); syncFloating();
-
-  // Persist ke localStorage
-  const KEY='mb.order.';
-  ['poSelect','armada','tanggal','jam','durasi','penumpang','jemput','tujuan','nama','catatan'].forEach(id=>{
-    const el=document.getElementById(id); if(!el) return;
-    const val = localStorage.getItem(KEY+id);
-    if(val!==null){ el.value = val; el.dispatchEvent(new Event('change')); }
-    el.addEventListener('change', ()=> localStorage.setItem(KEY+id, el.value));
-    el.addEventListener('input', ()=> localStorage.setItem(KEY+id, el.value));
-  });
-
-  // Update CTA manual WA
-  const manualBtn=document.getElementById('cta-wa-manual');
-  if(manualBtn) manualBtn.href = (typeof waLink==='function')
-    ? waLink(MULTIBUS.wa,'Halo Admin MultiBus, saya ingin bertanya ketersediaan armada.')
-    : manualBtn.href;
-
-  // Disable kirim sampai valid
-  syncNextBtn();
-
-  // ====== Seat Preset (auto pilih armada dari jumlah penumpang) ======
-  (function seatPresetInit(){
-    const seatEl   = document.getElementById('penumpang');
-    const armadaEl = document.getElementById('armada');
-    if(!seatEl || !armadaEl) return;
-    function pickArmadaForSeats(seats){
-      if(!(seats > 0)) return;
-      let chosenIndex = armadaEl.options.length - 1; // default ke opsi terakhir (Big Bus)
-      for(let i=0; i<armadaEl.options.length; i++){
-        const opt = armadaEl.options[i];
-        const min = Number(opt.dataset.min || 0);
-        const max = Number(opt.dataset.max || 999);
-        if(seats >= min && seats <= max){ chosenIndex = i; break; }
-      }
-      if(armadaEl.selectedIndex !== chosenIndex){
-        armadaEl.selectedIndex = chosenIndex;
-        armadaEl.dispatchEvent(new Event('change'));
-      }
-    }
-    ['input','change'].forEach(ev => seatEl.addEventListener(ev, ()=>{
-      const seats = parseInt(seatEl.value, 10);
-      pickArmadaForSeats(seats);
-    }));
-    const initSeats = parseInt(seatEl.value, 10);
-    if(initSeats > 0) pickArmadaForSeats(initSeats);
-  })();
-
-})();
-</script>
-
-  <!-- SEO Schema (valid JSON, tanpa komentar) -->
-  <script type="application/ld+json">
-  [
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "MultiBus — Sulawesi Selatan",
-    "url": "https://www.multibus.id/",
-    "logo": "https://www.multibus.id/image/Logoklikbus.png",
-    "sameAs": [
-      "https://wa.me/6285256473344"
-    ],
-    "contactPoint": [
-      {
-        "@type": "ContactPoint",
-        "contactType": "customer service",
-        "areaServed": "ID",
-        "availableLanguage": [
-          "id"
-        ],
-        "telephone": "+62-852-5647-3344"
-      }
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "ID"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "MultiBus",
-    "url": "https://www.multibus.id/",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://www.multibus.id/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Bagaimana cara memesan bus?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Pilih PO dan armada, isi form singkat, lalu klik Kirim ke WhatsApp — chat langsung ke Admin MultiBus."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Berapa harga sewa Minibus/Medium/Big Bus?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Harga mulai berbeda tiap PO dan menyesuaikan rute, tanggal, serta durasi. Lihat kisaran pada kartu PO atau chat Admin MultiBus untuk penawaran resmi."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Area layanan MultiBus?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Pickup dari wilayah Sulawesi Selatan (Makassar, Parepare, Pinrang, dll). Tujuan fleksibel dalam dan luar provinsi sesuai kebijakan PO."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Apakah perlu DP?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Umumnya dibutuhkan uang muka untuk mengunci tanggal. Besaran DP mengikuti kebijakan PO."
-        }
-      }
-    ]
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Beranda",
-        "item": "https://www.multibus.id/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Sewa Bus",
-        "item": "https://www.multibus.id/"
-      }
-    ]
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Sewa Bus & Minibus",
-    "provider": {
-      "@type": "Organization",
-      "name": "MultiBus",
-      "url": "https://www.multibus.id/"
-    },
-    "areaServed": [
-      "Makassar",
-      "Parepare",
-      "Pinrang",
-      "Sidrap",
-      "Barru",
-      "Tana Toraja",
-      "Malino",
-      "Bira",
-      "Bone",
-      "Wajo",
-      "Soppeng",
-      "Gowa",
-      "Maros",
-      "Pangkep",
-      "Luwu",
-      "Palopo",
-      "Enrekang",
-      "Bulukumba",
-      "Sinjai",
-      "Jeneponto",
-      "Takalar"
-    ],
-    "availableChannel": {
-      "@type": "ServiceChannel",
-      "serviceUrl": "https://www.multibus.id/",
-      "availableLanguage": [
-        "id"
-      ]
-    }
-  }
-]
   </script>
 </body>
 </html>
